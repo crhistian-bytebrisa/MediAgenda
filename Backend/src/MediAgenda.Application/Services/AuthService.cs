@@ -156,10 +156,5 @@ namespace MediAgenda.Application.Services
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
-
-        private async Task SetCookie(string token, DateTime expiration)
-        {
-           
-        }
     }
 }

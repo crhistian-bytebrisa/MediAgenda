@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace MediAgenda.Infraestructure.Migrations
 {
     /// <inheritdoc />
-    public partial class MigracionV8 : Migration
+    public partial class initialmigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -575,6 +575,7 @@ namespace MediAgenda.Infraestructure.Migrations
                 values: new object[,]
                 {
                     { "12e6b0e1-1eb6-4a4b-8b57-a7d8adf78sdf", 0, "rufino-concurrency-004", "rufino@mediagenda.com", true, false, null, "Rufino Alcachofa", "RUFINO@MEDIAGENDA.COM", null, "AQAAAAIAAYagAAAAEMYtGJF/SM5CogXcBNxMt7wjuA8/1by854I67fOXznLB9REB7YSpdV6xE4RIs0Q8Eg==", "8491782495", false, "RUFINO-SECURITY-STAMP-004", false, null },
+                    { "12e6b0e1-1eb6-4a4b-8b57-a7D9adT78sdf", 0, "admin-concurrency-004", "admin@mediagenda.com", true, false, null, "Jhan Crhistian", "admin@MEDIAGENDA.COM", null, "AQAAAAIAAYagAAAAEMYtGJF/SM5CogXcBNxMt7wjuA8/1by854I67fOXznLB9REB7YSpdV6xE4RIs0Q8Eg==", "8098876543", false, "ADMIN-SECURITY-STAMP-004", false, null },
                     { "12e6b0e1-1eb6-4a4b-8b57-d1a00b31cb46", 0, "alva-concurrency-003", "alva@mediagenda.com", true, false, null, "Alva Alcachofa", "ALVA@MEDIAGENDA.COM", null, "AQAAAAIAAYagAAAAEMYtGJF/SM5CogXcBNxMt7wjuA8/1by854I67fOXznLB9REB7YSpdV6xE4RIs0Q8Eg==", "8093543337", false, "ALVA-SECURITY-STAMP-003", false, null },
                     { "1ebe636e-b277-47ea-a2f8-6502cd988476", 0, "pedro-concurrency-002", "pedro@mediagenda.com", true, false, null, "Pedro Alcachofa", "PEDRO@MEDIAGENDA.COM", null, "AQAAAAIAAYagAAAAEMYtGJF/SM5CogXcBNxMt7wjuA8/1by854I67fOXznLB9REB7YSpdV6xE4RIs0Q8Eg==", "8093454567", false, "PEDRO-SECURITY-STAMP-002", false, null },
                     { "7bd25c44-f324-41f7-aae9-43a2f744ef46", 0, "doctor-concurrency-001", "dr.martinez@mediagenda.com", true, false, null, "Carlos Martínez Pérez", "DR.MARTINEZ@MEDIAGENDA.COM", null, "AQAAAAIAAYagAAAAEMYtGJF/SM5CogXcBNxMt7wjuA8/1by854I67fOXznLB9REB7YSpdV6xE4RIs0Q8Eg==", "8091234567", false, "DOCTOR-SECURITY-STAMP-001", false, null }
@@ -618,6 +619,7 @@ namespace MediAgenda.Infraestructure.Migrations
                 values: new object[,]
                 {
                     { "user-role-id", "12e6b0e1-1eb6-4a4b-8b57-a7d8adf78sdf" },
+                    { "admin-role-id", "12e6b0e1-1eb6-4a4b-8b57-a7D9adT78sdf" },
                     { "user-role-id", "12e6b0e1-1eb6-4a4b-8b57-d1a00b31cb46" },
                     { "user-role-id", "1ebe636e-b277-47ea-a2f8-6502cd988476" },
                     { "doctor-role-id", "7bd25c44-f324-41f7-aae9-43a2f744ef46" }

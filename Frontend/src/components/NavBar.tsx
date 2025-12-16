@@ -1,9 +1,9 @@
 import { useState } from "react";
+import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/MediAgenda.png";
-import { useAuth } from "../context/AutContext";
 
-export function Navbar() {
+export function NavBar() {
   const { user, roles, logout } = useAuth();
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);

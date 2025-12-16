@@ -17,7 +17,7 @@ namespace MediAgenda.Infraestructure.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "9.0.10")
+                .HasAnnotation("ProductVersion", "10.0.1")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -197,6 +197,22 @@ namespace MediAgenda.Infraestructure.Migrations
                             PhoneNumber = "8491782495",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "RUFINO-SECURITY-STAMP-004",
+                            TwoFactorEnabled = false
+                        },
+                        new
+                        {
+                            Id = "12e6b0e1-1eb6-4a4b-8b57-a7D9adT78sdf",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "admin-concurrency-004",
+                            Email = "admin@mediagenda.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NameComplete = "Jhan Crhistian",
+                            NormalizedEmail = "admin@MEDIAGENDA.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAEMYtGJF/SM5CogXcBNxMt7wjuA8/1by854I67fOXznLB9REB7YSpdV6xE4RIs0Q8Eg==",
+                            PhoneNumber = "8098876543",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "ADMIN-SECURITY-STAMP-004",
                             TwoFactorEnabled = false
                         });
                 });
@@ -966,6 +982,11 @@ namespace MediAgenda.Infraestructure.Migrations
                         {
                             UserId = "12e6b0e1-1eb6-4a4b-8b57-a7d8adf78sdf",
                             RoleId = "user-role-id"
+                        },
+                        new
+                        {
+                            UserId = "12e6b0e1-1eb6-4a4b-8b57-a7D9adT78sdf",
+                            RoleId = "admin-role-id"
                         });
                 });
 
