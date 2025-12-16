@@ -1,30 +1,30 @@
-import { Routes, Route, Navigate } from "react-router-dom";
-import { ProtectedRoute } from "./Routes/ProtectedRoute";
-import { AdminHome } from "./Pages/home/AdminHome";
-import { DoctorHome } from "./Pages/home/DoctorHome";
-import { HomePage } from "./Pages/home/HomePage";
-import { LoginPage } from "./Pages/LoginPage";
-import { PatientHome } from "./Pages/home/PatientHome";
-import { RegisterPage } from "./Pages/RegisterPage";
-import { ProfilePage } from "./Pages/ProfilePage";
-import { useAuth } from "./Context/AuthContext";
-import { AnalysesCRUD } from "./Pages/Especialtypages/AnalysesPage";
-import { ClinicsCRUD } from "./Pages/Especialtypages/ClinicsPage";
-import { PermissionsCRUD } from "./Pages/Especialtypages/PermissionsPage";
-import { MedicinesCRUD } from "./Pages/Especialtypages/MedicinesPage";
-import { InsurancesCRUD } from "./Pages/Especialtypages/InsurancesPage";
-import { PatientsList } from "./Pages/Especialtypages/PatientsPage";
-import { PatientDetails } from "./Pages/Especialtypages/PatientDetailsPage";
-import { ConsultationsList } from "./Pages/Especialtypages/ConsultationsPage";
-import { ConsultationDetails } from "./Pages/Especialtypages/ConsultationDetailsPage";
-import { UserConsultationsPage } from "./Pages/home/UserConsultationsPage";
-import { UserMedicinesPage } from "./Pages/home/UserMedicinesPage";
-import { UserDocumentsPage } from "./Pages/home/UserDocumentsPage";
-import DaysAvailableCRUD from "./Pages/Especialtypages/DaysAvailablePage";
-import { SchedulePage } from "./Pages/Especialtypages/SchedulePage";
-import { AppointmentPage } from "./Pages/Especialtypages/AppointmentPage";
-import { TodayConsultationsPage } from "./Pages/Especialtypages/TodayConsultationsPage";
-import { AttendConsultationPage } from "./Pages/Especialtypages/AttendConsultationPage";
+import { routes, Route, Navigate } from "react-router-dom";
+import { ProtectedRoute } from "./routes/ProtectedRoute";
+import { AdminHome } from "./pages/home/AdminHome";
+import { DoctorHome } from "./pages/home/DoctorHome";
+import { HomePage } from "./pages/home/HomePage";
+import { LoginPage } from "./pages/LoginPage";
+import { PatientHome } from "./pages/home/PatientHome";
+import { RegisterPage } from "./pages/RegisterPage";
+import { ProfilePage } from "./pages/ProfilePage";
+import { useAuth } from "./context/AuthContext";
+import { AnalysesCRUD } from "./Pages/especialtypages/AnalysesPage";
+import { ClinicsCRUD } from "./Pages/especialtypages/ClinicsPage";
+import { PermissionsCRUD } from "./Pages/especialtypages/PermissionsPage";
+import { MedicinesCRUD } from "./Pages/especialtypages/MedicinesPage";
+import { InsurancesCRUD } from "./Pages/especialtypages/InsurancesPage";
+import { PatientsList } from "./Pages/especialtypages/PatientsPage";
+import { PatientDetails } from "./Pages/especialtypages/PatientDetailsPage";
+import { ConsultationsList } from "./Pages/especialtypages/ConsultationsPage";
+import { ConsultationDetails } from "./Pages/especialtypages/ConsultationDetailsPage";
+import { UserConsultationsPage } from "./pages/home/UserConsultationsPage";
+import { UserMedicinesPage } from "./pages/home/UserMedicinesPage";
+import { UserDocumentsPage } from "./pages/home/UserDocumentsPage";
+import DaysAvailableCRUD from "./Pages/especialtypages/DaysAvailablePage";
+import { SchedulePage } from "./Pages/especialtypages/SchedulePage";
+import { AppointmentPage } from "./Pages/especialtypages/AppointmentPage";
+import { TodayConsultationsPage } from "./Pages/especialtypages/TodayConsultationsPage";
+import { AttendConsultationPage } from "./Pages/especialtypages/AttendConsultationPage";
 
 
 function App() {
@@ -42,7 +42,7 @@ function App() {
     }
 
   return (
-    <Routes>
+    <routes>
       <Route path="/admin" element={
         <ProtectedRoute allowedRoles={["Admin"]}>
           <AdminHome />
@@ -180,7 +180,7 @@ function App() {
       <Route path="/register" element={<RegisterPage/>}/>
 
       <Route path="/*" element={<Navigate to={home} />} />
-    </Routes>
+    </routes>
   );
 }
 

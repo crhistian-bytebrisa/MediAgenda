@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { useAuth } from "../Context/AuthContext";
+import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
-import logo from "../Assets/MediAgenda.png";
+import logo from "../assets/MediAgenda.png";
 
 export function NavBar() {
   const { user, roles, logout } = useAuth();

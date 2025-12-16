@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { API } from "../../services/APIService";
-import { Patient } from "../../models/Patientsmodels";
+import { Patient } from "../../models/PatientsModels";
 import { NavBar } from "../../Components/NavBar";
 
 export function PatientsList() {

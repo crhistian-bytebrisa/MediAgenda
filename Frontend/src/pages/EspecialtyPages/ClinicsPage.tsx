@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { API } from "../../services/APIService";
-import { Clinic, ClinicCreate, ClinicUpdate } from "../../models/ClinicsAndDaysmodels";
+import { Clinic, ClinicCreate, ClinicUpdate } from "../../models/ClinicsAndDaysModels";
 import { NavBar } from "../../Components/NavBar";
 
 export function ClinicsCRUD() {

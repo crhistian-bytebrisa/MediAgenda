@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { API } from "../../services/APIService";
 import { API_BASE_URL, AdaptResponse } from "../../services/base";
-import { Patient } from "../../models/Patientsmodels";
+import { Patient } from "../../models/PatientsModels";
 import { NavBar } from "../../Components/NavBar";
 
 export function PatientDetails() {
