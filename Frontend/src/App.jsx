@@ -7,7 +7,7 @@ import { LoginPage } from "./pages/LoginPage";
 import { PatientHome } from "./pages/Home/PatientHome";
 import { RegisterPage } from "./pages/RegisterPage";
 import { ProfilePage } from "./pages/ProfilePage";
-import { useAuth } from "./context/Autcontext";
+import { useAuth } from "./Context/Autcontext";
 import { AnalysesCRUD } from "./pages/Especialtypages/AnalysesPage";
 import { ClinicsCRUD } from "./pages/Especialtypages/ClinicsPage";
 import { PermissionsCRUD } from "./pages/Especialtypages/PermissionsPage";

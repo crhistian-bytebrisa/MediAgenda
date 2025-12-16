@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { API } from "../../services/APIService";
-import { useAuth } from "../../Context/AutContext";
+import { useAuth } from "../../Context/Autcontext";
 import { NavBar } from "../../components/NavBar";
 
 
