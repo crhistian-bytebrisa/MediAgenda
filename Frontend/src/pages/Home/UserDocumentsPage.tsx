@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { API } from "../../services/APIService";
 import { API_BASE_URL, AdaptResponse } from "../../services/base";
-import { useAuth } from "../../Context/AutContext";
+import { useAuth } from "../../context/AuthContext";
 import { NavBar } from "../../components/NavBar";
 
 export function UserDocumentsPage() {

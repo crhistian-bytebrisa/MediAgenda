@@ -1,5 +1,5 @@
 import { Navigate } from "react-router-dom";
-import { useAuth } from "../Context/AutContext";
+import { useAuth } from "../context/AuthContext";
 import { ReactNode } from "react";
 
 // Se declara la interfaz para los datos a recibir
