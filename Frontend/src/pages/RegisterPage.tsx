@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { RegisterDTO } from "../Models/AuthModels";
-import {BloodType, Gender} from "../Models/Enums"
-import { Insurance } from "../Models/InsurancesModels"; // Ajusta la ruta si es distinta
-import { API } from "../Services/APIService";
+import { RegisterDTO } from "../models/Authmodels";
+import {BloodType, Gender} from "../models/Enums"
+import { Insurance } from "../models/Insurancesmodels"; // Ajusta la ruta si es distinta
+import { API } from "../services/APIService";
 import { useNavigate } from "react-router-dom";
 
 export function RegisterPage() {

@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { API } from "../../Services/APIService";
-import { Patient } from "../../Models/PatientsModels";
-import { NavBar } from "../../components/Navbar";
+import { API } from "../../services/APIService";
+import { Patient } from "../../models/Patientsmodels";
+import { NavBar } from "../../components/NavBar";
 
 export function PatientsList() {
   const [patients, setPatients] = useState<Patient[]>([]);

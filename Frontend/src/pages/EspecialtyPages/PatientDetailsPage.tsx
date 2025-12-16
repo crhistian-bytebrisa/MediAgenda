@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { API } from "../../Services/APIService";
-import { API_BASE_URL, AdaptResponse } from "../../Services/base";
-import { Patient } from "../../Models/PatientsModels";
-import { NavBar } from "../../components/Navbar";
+import { API } from "../../services/APIService";
+import { API_BASE_URL, AdaptResponse } from "../../services/base";
+import { Patient } from "../../models/Patientsmodels";
+import { NavBar } from "../../components/NavBar";
 
 export function PatientDetails() {
   const { id } = useParams();

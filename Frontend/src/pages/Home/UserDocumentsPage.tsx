@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import { API } from "../../Services/APIService";
-import { API_BASE_URL, AdaptResponse } from "../../Services/base";
-import { useAuth } from "../../context/AutContext";
-import { NavBar } from "../../components/Navbar";
+import { API } from "../../services/APIService";
+import { API_BASE_URL, AdaptResponse } from "../../services/base";
+import { useAuth } from "../../context/Autcontext";
+import { NavBar } from "../../components/NavBar";
 
 export function UserDocumentsPage() {
   const [documents, setDocuments] = useState<any[]>([]);

@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { LoginDTO } from "../Models/AuthModels";
-import { API } from "../Services/APIService";
+import { LoginDTO } from "../models/Authmodels";
+import { API } from "../services/APIService";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AutContext";
+import { useAuth } from "../context/Autcontext";
 
 export function LoginPage() {
   const [loginData, setLoginData] = useState<LoginDTO>({

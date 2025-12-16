@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import { API } from "../../Services/APIService";
-import { useAuth } from "../../context/AutContext";
-import { NavBar } from "../../components/Navbar";
+import { API } from "../../services/APIService";
+import { useAuth } from "../../Context/AutContext";
+import { NavBar } from "../../components/NavBar";
+
 
 export function AppointmentPage() {
   const { user } = useAuth();

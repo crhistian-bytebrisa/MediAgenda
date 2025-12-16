@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { NavBar } from "../../components/Navbar";
-import { API } from "../../Services/APIService";
+import { API } from "../../services/APIService";
+import { NavBar } from "../../components/NavBar";
 
 export function AttendConsultationPage() {
   const { id } = useParams();

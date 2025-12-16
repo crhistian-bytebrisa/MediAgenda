@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { API } from "../../Services/APIService";
-import { Permission, PermissionCreate, PermissionUpdate } from "../../Models/PermissionsModels";
-import { NavBar } from "../../components/Navbar";
+import { API } from "../../services/APIService";
+import { Permission, PermissionCreate, PermissionUpdate } from "../../models/Permissionsmodels";
+import { NavBar } from "../../components/NavBar";
 
 export function PermissionsCRUD() {
   const [permissions, setPermissions] = useState<Permission[]>([]);

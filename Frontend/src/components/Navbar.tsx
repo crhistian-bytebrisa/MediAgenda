@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useAuth } from "../context/AutContext";
+import { useAuth } from "../Context/AutContext";
 import { useNavigate } from "react-router-dom";
 import logo from "../Assets/MediAgenda.png";
 

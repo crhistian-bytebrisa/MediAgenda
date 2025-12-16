@@ -1,5 +1,5 @@
-import { Routes, Route, Navigate } from "react-router-dom";
-import { ProtectedRoute } from "./Routes/ProtectedRoute";
+import { routes, Route, Navigate } from "react-router-dom";
+import { ProtectedRoute } from "./routes/ProtectedRoute";
 import { AdminHome } from "./pages/Home/AdminHome";
 import { DoctorHome } from "./pages/Home/DoctorHome";
 import { HomePage } from "./pages/Home/HomePage";
@@ -7,24 +7,24 @@ import { LoginPage } from "./pages/LoginPage";
 import { PatientHome } from "./pages/Home/PatientHome";
 import { RegisterPage } from "./pages/RegisterPage";
 import { ProfilePage } from "./pages/ProfilePage";
-import { useAuth } from "./context/AutContext";
-import { AnalysesCRUD } from "./pages/EspecialtyPages/AnalysesPage";
-import { ClinicsCRUD } from "./pages/EspecialtyPages/ClinicsPage";
-import { PermissionsCRUD } from "./pages/EspecialtyPages/PermissionsPage";
-import { MedicinesCRUD } from "./pages/EspecialtyPages/MedicinesPage";
-import { InsurancesCRUD } from "./pages/EspecialtyPages/InsurancesPage";
-import { PatientsList } from "./pages/EspecialtyPages/PatientsPage";
-import { PatientDetails } from "./pages/EspecialtyPages/PatientDetailsPage";
-import { ConsultationsList } from "./pages/EspecialtyPages/ConsultationsPage";
-import { ConsultationDetails } from "./pages/EspecialtyPages/ConsultationDetailsPage";
+import { useAuth } from "./context/Autcontext";
+import { AnalysesCRUD } from "./pages/Especialtypages/AnalysesPage";
+import { ClinicsCRUD } from "./pages/Especialtypages/ClinicsPage";
+import { PermissionsCRUD } from "./pages/Especialtypages/PermissionsPage";
+import { MedicinesCRUD } from "./pages/Especialtypages/MedicinesPage";
+import { InsurancesCRUD } from "./pages/Especialtypages/InsurancesPage";
+import { PatientsList } from "./pages/Especialtypages/PatientsPage";
+import { PatientDetails } from "./pages/Especialtypages/PatientDetailsPage";
+import { ConsultationsList } from "./pages/Especialtypages/ConsultationsPage";
+import { ConsultationDetails } from "./pages/Especialtypages/ConsultationDetailsPage";
 import { UserConsultationsPage } from "./pages/Home/UserConsultationsPage";
 import { UserMedicinesPage } from "./pages/Home/UserMedicinesPage";
 import { UserDocumentsPage } from "./pages/Home/UserDocumentsPage";
-import DaysAvailableCRUD from "./pages/EspecialtyPages/DaysAvailablePage";
-import { SchedulePage } from "./pages/EspecialtyPages/SchedulePage";
-import { AppointmentPage } from "./pages/EspecialtyPages/AppointmentPage";
-import { TodayConsultationsPage } from "./pages/EspecialtyPages/TodayConsultationsPage";
-import { AttendConsultationPage } from "./pages/EspecialtyPages/AttendConsultationPage";
+import DaysAvailableCRUD from "./pages/Especialtypages/DaysAvailablePage";
+import { SchedulePage } from "./pages/Especialtypages/SchedulePage";
+import { AppointmentPage } from "./pages/Especialtypages/AppointmentPage";
+import { TodayConsultationsPage } from "./pages/Especialtypages/TodayConsultationsPage";
+import { AttendConsultationPage } from "./pages/Especialtypages/AttendConsultationPage";
 
 
 function App() {
@@ -42,7 +42,7 @@ function App() {
     }
 
   return (
-    <Routes>
+    <routes>
       <Route path="/admin" element={
         <ProtectedRoute allowedRoles={["Admin"]}>
           <AdminHome />
@@ -180,7 +180,7 @@ function App() {
       <Route path="/register" element={<RegisterPage/>}/>
 
       <Route path="/*" element={<Navigate to={home} />} />
-    </Routes>
+    </routes>
   );
 }
 

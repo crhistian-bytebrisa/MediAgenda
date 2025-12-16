@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { API } from "../../Services/APIService";
-import { NavBar } from "../../components/Navbar";
+import { API } from "../../services/APIService";
+import { NavBar } from "../../components/NavBar";
 
 export function ConsultationsList() {
   const [consultations, setConsultations] = useState<any[]>([]);
