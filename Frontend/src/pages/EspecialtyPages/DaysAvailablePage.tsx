@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { API } from "../../services/APIService";
 import { DayAvailable, DayAvailableCreate } from "../../models/ClinicsAndDaysModels";
-import { NavBar } from "../../components/NavBar";
+import { NavBar } from "../../Components/NavBar";
 
 export default function DaysAvailableCRUD() {
   const [days, setDays] = useState<DayAvailable[]>([]);

@@ -1,5 +1,5 @@
-import { NavBar } from "../components/NavBar";
-import { useAuth } from "../context/AuthContext";
+import { NavBar } from "../Components/NavBar";
+import { useAuth } from "../Context/AuthContext";
 
 
 export function ProfilePage() {

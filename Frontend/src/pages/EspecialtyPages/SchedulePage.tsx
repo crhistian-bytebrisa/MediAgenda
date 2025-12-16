@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { API } from "../../services/APIService";
-import { useAuth } from "../../context/AuthContext";
-import { NavBar } from "../../components/NavBar";
+import { useAuth } from "../../Context/AuthContext";
+import { NavBar } from "../../Components/NavBar";
 
 export function SchedulePage() {
   const { user } = useAuth();

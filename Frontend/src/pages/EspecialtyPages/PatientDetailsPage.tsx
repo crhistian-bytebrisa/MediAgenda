@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { API } from "../../services/APIService";
 import { API_BASE_URL, AdaptResponse } from "../../services/base";
 import { Patient } from "../../models/Patientsmodels";
-import { NavBar } from "../../components/NavBar";
+import { NavBar } from "../../Components/NavBar";
 
 export function PatientDetails() {
   const { id } = useParams();

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { API } from "../../services/APIService";
 import { Medicine, MedicineCreate } from "../../models/Medicinesmodels";
-import { NavBar } from "../../components/NavBar";
+import { NavBar } from "../../Components/NavBar";
 
 export function MedicinesCRUD() {
   const [medicines, setMedicines] = useState<Medicine[]>([]);

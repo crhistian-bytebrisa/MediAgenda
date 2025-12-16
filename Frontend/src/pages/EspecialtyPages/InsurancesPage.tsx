@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { API } from "../../services/APIService";
 import { Insurance, InsuranceCreate, InsuranceUpdate } from "../../models/Insurancesmodels";
-import { NavBar } from "../../components/NavBar";
+import { NavBar } from "../../Components/NavBar";
 
 export function InsurancesCRUD() {
   const [insurances, setInsurances] = useState<Insurance[]>([]);

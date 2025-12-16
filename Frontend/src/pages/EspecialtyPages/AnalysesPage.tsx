@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { API } from "../../services/APIService";
 import { Analysis, AnalysisCreate, AnalysisUpdate } from "../../models/Analysesmodels";
-import { NavBar } from "../../components/NavBar";
+import { NavBar } from "../../Components/NavBar";
 
 export function AnalysesCRUD() {
   const [analyses, setAnalyses] = useState<Analysis[]>([]);

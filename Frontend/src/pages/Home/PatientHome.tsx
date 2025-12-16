@@ -1,5 +1,5 @@
-import { MenuCard } from "../../components/Menucard";
-import { NavBar } from "../../components/NavBar";
+import { MenuCard } from "../../Components/Menucard";
+import { NavBar } from "../../Components/NavBar";
 
 export function PatientHome() {
   const menuItems = [
