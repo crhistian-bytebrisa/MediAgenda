@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
-
+//f
 // Interfaz para simular una clase con los componentes
 interface AuthContextType {
   user: any;
