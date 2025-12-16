@@ -1,5 +1,5 @@
 
-import { MenuCard } from "../../components/Menucard";
+import { MenuCard } from "../../components/MenuCard";
 import { NavBar } from "../../components/NavBar";
 
 export function DoctorHome() {
