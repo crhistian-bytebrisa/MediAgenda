@@ -9,7 +9,9 @@ namespace MediAgenda.Application.DTOs
         public string Email { get; set; }
         public string NameComplete { get; set; }
         public string PhoneNumber { get; set; }
+        public int DoctorId { get; set; }
         public DoctorSimpleDTO Doctor { get; set; }
+        public int PatientId { get; set; }
         public PatientSimpleDTO Patient { get; set; }
     }
 
