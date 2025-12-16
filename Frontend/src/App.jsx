@@ -8,23 +8,23 @@ import { PatientHome } from "./pages/home/PatientHome";
 import { RegisterPage } from "./pages/RegisterPage";
 import { ProfilePage } from "./pages/ProfilePage";
 import { useAuth } from "./context/AuthContext";
-import { AnalysesCRUD } from "./Pages/especialtypages/AnalysesPage";
-import { ClinicsCRUD } from "./Pages/especialtypages/ClinicsPage";
-import { PermissionsCRUD } from "./Pages/especialtypages/PermissionsPage";
-import { MedicinesCRUD } from "./Pages/especialtypages/MedicinesPage";
-import { InsurancesCRUD } from "./Pages/especialtypages/InsurancesPage";
-import { PatientsList } from "./Pages/especialtypages/PatientsPage";
-import { PatientDetails } from "./Pages/especialtypages/PatientDetailsPage";
-import { ConsultationsList } from "./Pages/especialtypages/ConsultationsPage";
-import { ConsultationDetails } from "./Pages/especialtypages/ConsultationDetailsPage";
+import { AnalysesCRUD } from "./pages/especialtypages/AnalysesPage";
+import { ClinicsCRUD } from "./pages/especialtypages/ClinicsPage";
+import { PermissionsCRUD } from "./pages/especialtypages/PermissionsPage";
+import { MedicinesCRUD } from "./pages/especialtypages/MedicinesPage";
+import { InsurancesCRUD } from "./pages/especialtypages/InsurancesPage";
+import { PatientsList } from "./pages/especialtypages/PatientsPage";
+import { PatientDetails } from "./pages/especialtypages/PatientDetailsPage";
+import { ConsultationsList } from "./pages/especialtypages/ConsultationsPage";
+import { ConsultationDetails } from "./pages/especialtypages/ConsultationDetailsPage";
 import { UserConsultationsPage } from "./pages/home/UserConsultationsPage";
 import { UserMedicinesPage } from "./pages/home/UserMedicinesPage";
 import { UserDocumentsPage } from "./pages/home/UserDocumentsPage";
-import DaysAvailableCRUD from "./Pages/especialtypages/DaysAvailablePage";
-import { SchedulePage } from "./Pages/especialtypages/SchedulePage";
-import { AppointmentPage } from "./Pages/especialtypages/AppointmentPage";
-import { TodayConsultationsPage } from "./Pages/especialtypages/TodayConsultationsPage";
-import { AttendConsultationPage } from "./Pages/especialtypages/AttendConsultationPage";
+import DaysAvailableCRUD from "./pages/especialtypages/DaysAvailablePage";
+import { SchedulePage } from "./pages/especialtypages/SchedulePage";
+import { AppointmentPage } from "./pages/especialtypages/AppointmentPage";
+import { TodayConsultationsPage } from "./pages/especialtypages/TodayConsultationsPage";
+import { AttendConsultationPage } from "./pages/especialtypages/AttendConsultationPage";
 
 
 function App() {
