@@ -64,6 +64,18 @@ namespace MediAgenda.Infraestructure.Context.SeedsData
                     PasswordHash = "AQAAAAIAAYagAAAAEMYtGJF/SM5CogXcBNxMt7wjuA8/1by854I67fOXznLB9REB7YSpdV6xE4RIs0Q8Eg==", //contraseña123!
                     SecurityStamp = "RUFINO-SECURITY-STAMP-004",
                     ConcurrencyStamp = "rufino-concurrency-004"
+                },
+                new ApplicationUserModel
+                {
+                    Id = "12e6b0e1-1eb6-4a4b-8b57-a7D9adT78sdf",
+                    Email = "admin@mediagenda.com",
+                    NormalizedEmail = "admin@MEDIAGENDA.COM",
+                    NameComplete = "Jhan Crhistian",
+                    PhoneNumber = "8098876543",
+                    EmailConfirmed = true,
+                    PasswordHash = "AQAAAAIAAYagAAAAEMYtGJF/SM5CogXcBNxMt7wjuA8/1by854I67fOXznLB9REB7YSpdV6xE4RIs0Q8Eg==", //contraseña123!
+                    SecurityStamp = "ADMIN-SECURITY-STAMP-004",
+                    ConcurrencyStamp = "admin-concurrency-004"
                 }
             );
         }
@@ -121,6 +133,11 @@ namespace MediAgenda.Infraestructure.Context.SeedsData
                 {
                     UserId = "12e6b0e1-1eb6-4a4b-8b57-a7d8adf78sdf", // Rufino Alcachofa
                     RoleId = "user-role-id"
+                },
+                new IdentityUserRole<string>
+                {
+                    UserId = "12e6b0e1-1eb6-4a4b-8b57-a7D9adT78sdf", // Jhan Crhistian
+                    RoleId = "admin-role-id"
                 });
         }
     }
