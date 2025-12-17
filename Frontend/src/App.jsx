@@ -1,4 +1,4 @@
-import { Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { ProtectedRoute } from "./routes/ProtectedRoute";
 import { AdminHome } from "./pages/home/AdminHome";
 import { DoctorHome } from "./pages/home/DoctorHome";
@@ -42,7 +42,7 @@ function App() {
     }
 
   return (
-    <routes>
+    <Routes>
       <Route path="/admin" element={
         <ProtectedRoute allowedRoles={["Admin"]}>
           <AdminHome />
@@ -180,7 +180,7 @@ function App() {
       <Route path="/register" element={<RegisterPage/>}/>
 
       <Route path="/*" element={<Navigate to={home} />} />
-    </routes>
+    </Routes>
   );
 }
 
