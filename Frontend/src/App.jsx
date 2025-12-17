@@ -1,4 +1,4 @@
-import { routes, Route, Navigate } from "react-router-dom";
+import { Route, Navigate } from "react-router-dom";
 import { ProtectedRoute } from "./routes/ProtectedRoute";
 import { AdminHome } from "./pages/home/AdminHome";
 import { DoctorHome } from "./pages/home/DoctorHome";
