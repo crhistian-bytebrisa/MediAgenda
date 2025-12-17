@@ -1,4 +1,4 @@
-import logo from "../assets/MediAgenda.png";
+import logo from "../../assets/MediAgenda.png";
 export function HomePage() {
   return (
     <>
