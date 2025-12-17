@@ -10,8 +10,6 @@ export function UserConsultationsPage() {
 
   useEffect(() => {
     const patientId = user?.patient?.id;
-    console.log('User data:', user);
-    console.log('Patient ID:', patientId);
     if (patientId) {
       fetchConsultations(patientId);
     }
@@ -21,7 +19,7 @@ export function UserConsultationsPage() {
     try {
       setLoading(true);
       const res = await API.GetAll(`Patients/${patientId}/Consultations?IncludePatient=true&IncludeReason=true&IncludeDayAvailable=true`);
-      console.log('Consultations response:', res);
+
       setConsultations(res?.data?.items || res?.data || res || []);
     } catch (error) {
       console.error("Error fetching consultations:", error);
