@@ -1,3 +1,4 @@
+import logo from "../../assets/MediAgenda.png";
 export function HomePage() {
   return (
     <>
@@ -6,7 +7,7 @@ export function HomePage() {
       <nav className="navbar navbar-expand-lg navbar-light bg-white shadow-sm px-3">
         <a className="navbar-brand fw-bold text-primary" href="#">
            <img
-            src="./src/assets//MediAgenda.png"
+            src={logo}
             alt="MediAgenda Icon"
             style={{ width: "32px", height: "32px" }}
             className="me-2"
