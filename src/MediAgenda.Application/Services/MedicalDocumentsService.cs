@@ -123,7 +123,6 @@ namespace MediAgenda.Application.Services
             if(File.Exists(path))
             {
                 File.Delete(path);
-
             }
 
             await _repo.DeleteAsync(model);
