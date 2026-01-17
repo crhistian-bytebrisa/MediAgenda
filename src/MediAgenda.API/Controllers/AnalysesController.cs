@@ -107,6 +107,14 @@ namespace MediAgenda.API.Controllers
         // PUT api/Analyses/5
         [HttpPut("{id:int}")]
         [Authorize(Roles = "Doctor,Admin")]
+        [SwaggerResponse(204, "Analisis actualizado exitosamente.")]
+        [SwaggerResponse(401, "No estas registrado.")]
+        [SwaggerResponse(403, "No eres Admin o Doctor")]
+        [SwaggerResponse(400, "Datos invalidos.")]
+        [SwaggerOperation(
+            Summary = "Actualiza un analisis existente.",
+            Description = "Este endpoint permite actualizar un analisis solo si eres Doctor o Admin."
+            )]
         public async Task<ActionResult> PutAsync(int id, [FromBody] AnalysisUpdateDTO dtou)
         {
 
@@ -122,6 +130,14 @@ namespace MediAgenda.API.Controllers
         // DELETE api/Analyses/5
         [HttpDelete("{id:int}")]
         [Authorize(Roles = "Doctor,Admin")]
+        [SwaggerResponse(204, "Analisis eliminado exitosamente.")]
+        [SwaggerResponse(401, "No estas registrado.")]
+        [SwaggerResponse(403, "No eres Admin o Doctor")]
+        [SwaggerResponse(404, "Analisis no encontrado.")]
+        [SwaggerOperation(
+            Summary = "Elimina un analisis.",
+            Description = "Este endpoint permite eliminar un analisis solo si eres Doctor o Admin."
+            )]
         public async Task<ActionResult> Delete(int id)
         {
             var dto = await _service.GetByIdAsync(id);
