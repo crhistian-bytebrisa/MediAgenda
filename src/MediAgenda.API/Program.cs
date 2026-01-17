@@ -129,18 +129,19 @@ namespace MediAgenda.API
                 opt.EnableAnnotations();
                 opt.SwaggerDoc("v1", new OpenApiInfo
                 {
-                    Title = "MediAgenda API de Gestíon Medica",
+                    Title = "MediAgenda API de Gestión Médica",
                     Version = "v1",
-                    Description = "Esta es una API encargada de gestionar consultas medicas, ademas de documentos, analisis y medicamentos.",
+                    Description = "Esta es una API encargada de gestionar consultas médicas, además de documentos, análisis y medicamentos. Si quieres ver el codigo esta en Website",
+
                     Contact = new OpenApiContact
                     {
                         Name = "Jhan Crhistian Terrero Ramirez",
-                        Email = "j.crhistiantr@gmail.com"
-                    }
+                        Email = "j.crhistiantr@gmail.com",
+                        Url = new Uri("https://github.com/crhistian-bytebrisa/MediAgenda")
+                    }                    
                 });
+            });
 
-            }
-            );
 
             var app = builder.Build();
 
