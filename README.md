@@ -1,12 +1,14 @@
 # MediAgenda
 
-Este es un proyecto centrado en la gestión de consultas médicas para un médico en particular, pero con ciertas configuraciones que permitirían en un futuro implementarlo para varios médicos.
+Este es un proyecto centrado en la gestión de consultas médicas para un médico en particular, con una arquitectura pensada para que en el futuro pueda escalar y soportar múltiples médicos.
 
-Este proyecto nació a partir de una necesidad de un familiar médico e implementé la versión inicial para uno de los proyectos necesarios en el ITLA. Este repositorio contiene una API más profesional sobre el mismo proyecto, además de documentación con Swagger y un frontend.
+El proyecto nació a partir de una necesidad real de un familiar médico y fue implementado inicialmente como parte de uno de los proyectos requeridos en el ITLA. Esta versión corresponde a una **API REST profesional**, enfocada exclusivamente en el **backend**, con documentación interactiva mediante **Swagger**.
 
-# Tecnologías
+---
 
-<h3 align="center">🛠️ Backend</h3>
+## 🛠️ Tecnologías
+
+<h3 align="center">Backend</h3>
 
 <table align="center">
   <tr>
@@ -24,15 +26,12 @@ Este proyecto nació a partir de una necesidad de un familiar médico e implemen
     </td>
   </tr>  
 </table>
+
 <table align="center">
   <tr>
-    <td width="120" align="center" style="padding:10px; border:2px solid #F7DF1E; border-radius:10px; background-color:#1e1e1e;">
-      <img src="https://avatars.githubusercontent.com/u/5691010?s=200&v=4" width="50" />
-      <br><strong style="color:white;">Serilog</strong>
-    </td>
     <td width="120" align="center" style="padding:10px; border:2px solid #3178C6; border-radius:10px; background-color:#1e1e1e;">
       <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/entityframeworkcore/entityframeworkcore-original.svg" width="50"/>
-      <br><strong style="color:white;">Entity Framework</strong>
+      <br><strong style="color:white;">Entity Framework Core</strong>
     </td>
     <td width="120" align="center" style="padding:10px; border:2px solid #61DAFB; border-radius:10px; background-color:#1e1e1e;">
       <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/swagger/swagger-original.svg" width="50"/>
@@ -49,73 +48,53 @@ Este proyecto nació a partir de una necesidad de un familiar médico e implemen
   </tr>
 </table>
 
-<h3 align="center">🎨 Frontend</h3>
+---
 
-<table align="center">
-  <tr>
-    <td width="120" align="center" style="padding:10px; border:2px solid #F7DF1E; border-radius:10px; background-color:#1e1e1e;">
-      <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" width="50" />
-      <br><strong style="color:white;">JavaScript</strong>
-    </td>
-    <td width="120" align="center" style="padding:10px; border:2px solid #3178C6; border-radius:10px; background-color:#1e1e1e;">
-      <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg" width="50" />
-      <br><strong style="color:white;">TypeScript</strong>
-    </td>   
-  </tr>
-</table>
-<table align="center">
-  <tr>
-    <td width="120" align="center" style="padding:10px; border:2px solid #61DAFB; border-radius:10px; background-color:#1e1e1e;">
-      <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg" width="50" />
-      <br><strong style="color:white;">React</strong>
-    </td>
-  </tr>
-</table>
-<br/>
+## 🏷️ Funcionalidades de la API
 
-## 🏷️ Funcionalidades
+### 👤 Funcionalidades orientadas al paciente
 
-🧑 Desde el punto de vista del paciente:
+* Agendamiento, cancelación y reprogramación de consultas médicas.
+* Consulta del historial de medicamentos y análisis recetados.
+* Acceso al historial de certificados médicos.
+* Gestión y consulta de documentos médicos entregados al doctor.
 
-* Agendar consultas, cancelarlas o reagendarlas.
-* Historial de medicamentos y análisis recetados por su médico.
-* Historial de certificados médicos.
-* Acceso a documentos entregados al médico para mayor facilidad a la hora de ser referidos.
+### 👨‍⚕️ Funcionalidades orientadas al médico
 
-🧑‍⚕️ Desde el punto de vista del médico:
+* Gestión de días y horarios disponibles para consultas.
+* Control de la cantidad de citas permitidas por día.
+* Gestión de medicamentos, análisis y certificados médicos.
+* Registro de notas médicas privadas por consulta y paciente.
+* Acceso completo al historial clínico del paciente.
+* Generación e impresión de recetas médicas.
 
-* Gestión de días disponibles para consultas, además de un control sobre la cantidad de citas por la web.
-* Gestión de medicinas, análisis y certificados médicos.
-* Gestión de notas para las consultas y los pacientes, solo accesibles para el médico.
-* Capacidad de imprimir recetas.
-* Acceso total al historial del paciente.
-<br/>
+---
 
 ## 🔐 Seguridad
 
-* Autenticación basada en JWT
-* Autorización por roles
-* Validaciones con FluentValidation
-* Métodos personalizados de autorización
-* Logging centralizado con Serilog
-<br/>
+* Autenticación basada en **JWT**.
+* Autorización por **roles**.
+* Validaciones de entrada con **FluentValidation**.
+* Métodos personalizados de autorización.
+* Logging centralizado y estructurado.
+
+---
 
 ## 🏗️ Arquitectura
 
-### Backend
-
-* Arquitectura en N-capas:
+* Arquitectura en **N-capas**:
 
   * API
   * Application
   * Domain
   * Infrastructure
-* Inyección de dependencias
+* Separación clara de responsabilidades.
+* Uso de **inyección de dependencias**.
+* Preparada para escalar y desacoplar clientes (web, móvil, desktop).
 
-<br/>
-<br/>
+---
 
-# ▶️ Cómo ejecutar el proyecto
+## ▶️ Cómo ejecutar el proyecto
 
 ### Backend
 
@@ -126,11 +105,4 @@ dotnet ef database update
 dotnet run
 ```
 
-### Frontend
-
-```bash
-cd Frontend
-npm install
-npm run dev
-```
-
+Una vez iniciado, la documentación de la API estará disponible en **Swagger**, lo que permite probar y explorar todos los endpoints expuestos.
