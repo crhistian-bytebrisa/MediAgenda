@@ -99,7 +99,6 @@ El proyecto nació a partir de una necesidad real de un familiar médico y fue i
 ### Backend
 
 ```bash
-cd Backend/src
 dotnet restore
 dotnet ef database update
 dotnet run
