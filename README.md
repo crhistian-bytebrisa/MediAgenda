@@ -1,6 +1,4 @@
-# MediAgenda 🔨 <strong>EN PROGRESO</strong>
-
-VERSION FUTURA:
+# 🏥 MediAgenda 
 
 Este es un proyecto centrado en la gestión de consultas médicas para un médico en particular, con una arquitectura pensada para que en el futuro pueda escalar y soportar múltiples médicos.
 
