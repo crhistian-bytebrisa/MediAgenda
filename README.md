@@ -78,7 +78,7 @@ El proyecto nació a partir de una necesidad real de un familiar médico y fue i
 * Autorización por **roles**.
 * Validaciones de entrada con **FluentValidation**.
 * Métodos personalizados de autorización.
-* Logging centralizado y estructurado con **Serilog**.
+* Logging centralizado y estructurado.
 
 ---
 
