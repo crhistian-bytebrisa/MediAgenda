@@ -163,15 +163,6 @@ namespace MediAgenda.API.Controllers
             return NoContent();
         }
 
-        [SwaggerOperation(Summary = "Actualiza parcialmente un paciente.", Description = "Este endpoint actualiza parcialmente un paciente.")]
-        [SwaggerResponse(501, "No implementado.")]
-        [HttpPatch("{id:int}")]
-        [AuthorizeSamePatientIdOrRoles("id", "Doctor", "Admin")]
-        public async Task<ActionResult<DoctorDTO>> PatchAsync(int id)
-        {
-            return null;
-        }
-
         // DELETE api/Patients/5
         [SwaggerOperation(Summary = "Elimina un paciente.", Description = "Este endpoint elimina un paciente solo si eres Admin.")]
         [SwaggerResponse(204, "Paciente eliminado.")]

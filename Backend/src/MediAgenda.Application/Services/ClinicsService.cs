@@ -1,4 +1,4 @@
-﻿using Mapster;
+using Mapster;
 using MediAgenda.Application.DTOs;
 using MediAgenda.Application.DTOs.API;
 using MediAgenda.Application.Interfaces;
@@ -23,9 +23,10 @@ namespace MediAgenda.Application.Services
             _repo = repo;
         }
 
-        public async Task<List<string>> GetAllNames()
+        public async Task<List<ClinicsListItem>> GetAllNames()
         {
-            return await _repo.GetAllNames();
+            var list = await _repo.GetAllNames();
+            return list.Select(x => new ClinicsListItem(x.Id, x.Name)).ToList();
         }
 
         public async Task<ClinicModel> GetByIdAsync(int id)

@@ -1,4 +1,4 @@
-﻿using MediAgenda.Application.DTOs;
+using MediAgenda.Application.DTOs;
 using MediAgenda.Application.DTOs.API;
 using MediAgenda.Infraestructure.Models;
 using MediAgenda.Infraestructure.RequestRepositories;
@@ -7,8 +7,7 @@ namespace MediAgenda.Application.Interfaces
 {
     public interface IAnalysesService
     {
-        Task<List<string>> GetAllNames();
-
+        Task<List<AnalysesListItem>> GetAllNames();
         Task<AnalysisDTO> AddAsync(AnalysisCreateDTO dtoc);
         Task DeleteAsync(AnalysisModel model);
         Task<APIResponse<AnalysisDTO>> GetAllAsync(AnalysisRequest request);

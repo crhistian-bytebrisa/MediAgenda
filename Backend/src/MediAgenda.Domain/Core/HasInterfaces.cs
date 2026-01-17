@@ -6,16 +6,6 @@ using System.Threading.Tasks;
 
 namespace MediAgenda.Domain.Core
 {
-    public interface IHasIdInt
-    {
-        int Id { get; set; }
-    }
-
-    public interface IHasIdString
-    {
-        string Id { get; set; }
-    }
-
     public interface IHasName
     {
         string Name { get; set; }

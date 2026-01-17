@@ -25,6 +25,7 @@ namespace MediAgenda.API.Controllers
         {
             _service = service;
         }
+
         // GET: api/Consultations
         [SwaggerOperation(Summary = "Obtiene las consultas.", Description = "Este endpoint se creo para obtener las consultas en general.")]
         [SwaggerResponse(200, "Te devuelve las consultas en un JSON de paginacion.", typeof(APIResponse<ConsultationDTO>))]
@@ -108,16 +109,6 @@ namespace MediAgenda.API.Controllers
             await _service.UpdateAsync(dtou);
             return NoContent();
         }
-
-        [SwaggerOperation(Summary = "Actualiza parcialmente una consulta.", Description = "Este endpoint actualiza parcialmente una consulta.")]
-        [SwaggerResponse(501, "No implementado.")]
-        [HttpPatch("{id:int}")]
-        [Authorize(Roles = "Admin,Doctor,User")]
-        public async Task<ActionResult<ConsultationDTO>> PatchAsync(int id)
-        {
-            return null;
-        }
-
 
         // DELETE api/Consultations/5
         [SwaggerOperation(Summary = "Elimina una consulta.", Description = "Este endpoint elimina una consulta.")]

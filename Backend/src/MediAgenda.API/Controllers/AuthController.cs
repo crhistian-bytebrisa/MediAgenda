@@ -20,8 +20,9 @@ namespace MediAgenda.API.Controllers
             _service = service;
         }
 
+        // POST: api/Auth/Login
         [SwaggerOperation(Summary = "Inicia sesion en el sistema.", Description = "Este endpoint permite a los usuarios iniciar sesion.")]
-        [SwaggerResponse(200, "Te devuelve el token y la informacion del usuario.", typeof(APIJWTResponse))]
+        [SwaggerResponse(200, "Te devuelve el token en una cookie y la informacion del usuario.", typeof(APIJWTResponse))]
         [HttpPost("Login")]
         public async Task<ActionResult<APIJWTResponse>> Login(LoginDTO dto)
         {
@@ -30,8 +31,9 @@ namespace MediAgenda.API.Controllers
             return new APIJWTResponse(token.User, token.Roles);
         }
 
+        // POST: api/Auth/Register
         [SwaggerOperation(Summary = "Registra un nuevo usuario en el sistema.", Description = "Este endpoint permite registrar un nuevo usuario.")]
-        [SwaggerResponse(200, "Te devuelve el token y la informacion del usuario.", typeof(APIJWTResponse))]
+        [SwaggerResponse(200, "Te devuelve el token en una cookie y la informacion del usuario.", typeof(APIJWTResponse))]
         [HttpPost("Register")]
         public async Task<ActionResult<APIJWTResponse>> Register(RegisterDTO dto)
         {
@@ -40,6 +42,7 @@ namespace MediAgenda.API.Controllers
             return new APIJWTResponse(token.User,token.Roles);
         }
 
+        // PUT: api/Auth/Logout
         [SwaggerOperation(Summary = "Cierra sesion en el sistema.", Description = "Este endpoint permite a los usuarios cerrar sesion.")]
         [SwaggerResponse(204, "Sesion cerrada.")]
         [SwaggerResponse(401, "No estas registrado.")]

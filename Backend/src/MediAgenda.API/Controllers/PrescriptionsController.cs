@@ -71,14 +71,6 @@ namespace MediAgenda.API.Controllers
             return CreatedAtAction(actionName: nameof(Get), routeValues: new { id = dto.Id }, value: dto);
         }
 
-        [SwaggerOperation(Summary = "Actualiza parcialmente una prescripcion.", Description = "Este endpoint actualiza parcialmente una prescripcion.")]
-        [SwaggerResponse(501, "No implementado.")]
-        [HttpPatch("{id:int}")]
-        public async Task<ActionResult<DoctorDTO>> PatchAsync(int id)
-        {
-            return null;
-        }
-
         // DELETE api/Prescriptions/5
         [SwaggerOperation(Summary = "Elimina una prescripcion.", Description = "Este endpoint elimina una prescripcion.")]
         [SwaggerResponse(204, "Prescripcion eliminada.")]

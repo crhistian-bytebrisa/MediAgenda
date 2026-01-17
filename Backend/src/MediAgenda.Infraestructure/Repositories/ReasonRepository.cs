@@ -1,3 +1,4 @@
+using MediAgenda.Domain.Core;
 using MediAgenda.Infraestructure.Context;
 using MediAgenda.Infraestructure.Core;
 using MediAgenda.Infraestructure.Interfaces;
@@ -18,10 +19,10 @@ namespace MediAgenda.Infraestructure.Repositories
         {
         }
 
-        public async Task<List<string>> GetAllNames()
+        public async Task<List<ListItem>> GetAllNames()
         {
             return await _context.Set<ReasonModel>()
-                .Select(x => x.Title)
+                .Select(x => new ListItem(x.Id, x.Title))
                 .AsNoTracking()
                 .ToListAsync();
         }

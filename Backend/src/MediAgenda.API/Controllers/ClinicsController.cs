@@ -26,12 +26,13 @@ namespace MediAgenda.API.Controllers
             _service = service;
         }
 
+        // GET: api/Clinics/Names        
         [SwaggerOperation(Summary = "Obtiene los nombres de las clinicas.", Description = "Este endpoint se creo para llenar los textbox del front, todos los usuarios tienen acceso.")]
-        [SwaggerResponse(200, "Te devuelve los nombres de las clinicas.", typeof(List<string>))]
+        [SwaggerResponse(200, "Te devuelve los nombres de las clinicas.", typeof(List<ClinicsListItem>))]
         [SwaggerResponse(401, "No estas registrado.")]
         [HttpGet("Names")]
         [Authorize(Roles = "Doctor,Admin,User")]
-        public async Task<List<string>> GetNames()
+        public async Task<List<ClinicsListItem>> GetNames()
         {
             return await _service.GetAllNames();
         }
@@ -117,15 +118,6 @@ namespace MediAgenda.API.Controllers
 
             await _service.UpdateAsync(dtou);
             return NoContent();
-        }
-
-        [SwaggerOperation(Summary = "Actualiza parcialmente una clinica.", Description = "Este endpoint actualiza parcialmente una clinica.")]
-        [SwaggerResponse(501, "No implementado.")]
-        [HttpPatch("{id:int}")]
-        [Authorize(Roles = "Admin,Doctor")]
-        public async Task<ActionResult<ClinicDTO>> PatchAsync(int id)
-        {
-            return null;
         }
 
         // DELETE api/Clinics/5

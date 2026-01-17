@@ -95,14 +95,6 @@ namespace MediAgenda.API.Controllers
             return NoContent();
         }
 
-        [SwaggerOperation(Summary = "Actualiza parcialmente un dia disponible.", Description = "Este endpoint actualiza parcialmente un dia disponible.")]
-        [SwaggerResponse(501, "No implementado.")]
-        [HttpPatch("{id:int}")]
-        [Authorize(Roles = "Admin,Doctor")]
-        public async Task<ActionResult<DayAvailableDTO>> PatchAsync(int id)
-        {
-            return null;
-        }
 
         // DELETE api/DaysAvailable/5
         [SwaggerOperation(Summary = "Elimina un dia disponible.", Description = "Este endpoint elimina un dia disponible.")]

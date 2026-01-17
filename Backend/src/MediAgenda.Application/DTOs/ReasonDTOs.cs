@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
 
 namespace MediAgenda.Application.DTOs
@@ -47,12 +47,15 @@ namespace MediAgenda.Application.DTOs
         public bool Available { get; set; }
     }
 
-    public class ReasonPatchDTO
+    public class ReasonsListItem
     {
-        [JsonIgnore]
         public int Id { get; set; }
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public bool Available { get; set; }
+        public string Name { get; set; }
+
+        public ReasonsListItem(int id, string name)
+        {
+            Id = id;
+            Name = name;
+        }
     }
 }

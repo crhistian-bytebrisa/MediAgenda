@@ -1,0 +1,49 @@
+[2026-01-17 13:56:16] Request: POST 
+URL: /api/Auth/Login 
+Query: 
+Response: 200 
+Tiempo: 5351 ms
+
+
+[2026-01-17 13:56:30] Request: GET 
+URL: /.well-known/appspecific/com.chrome.devtools.json 
+Query: 
+Response: 404 
+Tiempo: 48 ms
+
+
+[2026-01-17 13:58:36] Request: GET 
+URL: /api/ApplicationUsers 
+Query: 
+Response: 200 
+Tiempo: 299 ms
+
+
+[2026-01-17 14:38:17] Request: GET 
+URL: /api/Analyses/Names 
+Query: 
+Response: 200 
+Tiempo: 2603 ms
+
+
+[2026-01-17 14:38:28] Request: GET 
+URL: /api/Clinics/Names 
+Query: 
+Response: 200 
+Tiempo: 132 ms
+
+
+[2026-01-17 14:38:38] Request: GET 
+URL: /api/Insurances/Names 
+Query: 
+Response: 200 
+Tiempo: 75 ms
+
+
+[2026-01-17 14:38:57] Request: GET 
+URL: /api/Reasons/Names 
+Query: 
+Response: 200 
+Tiempo: 108 ms
+
+

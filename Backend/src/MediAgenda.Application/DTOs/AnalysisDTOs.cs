@@ -1,4 +1,4 @@
-﻿using MediAgenda.Application.DTOs.Relations;
+using MediAgenda.Application.DTOs.Relations;
 using MediAgenda.Domain.Core;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
@@ -29,7 +29,7 @@ namespace MediAgenda.Application.DTOs
         public string Description { get; set; }
     }
 
-    public class AnalysisUpdateDTO 
+    public class AnalysisUpdateDTO
     {
         [Required(ErrorMessage = "El campo {0} es requerido.")]
         public int Id { get; set; }
@@ -40,5 +40,17 @@ namespace MediAgenda.Application.DTOs
 
         [MaxLength(500, ErrorMessage = "No puedes tener mas de {1} caracteres en {0}.")]
         public string Description { get; set; }
+    }
+
+    public class AnalysesListItem
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+
+        public AnalysesListItem(int id, string name)
+        {
+            Id = id;
+            Name = name;
+        }
     }
 }

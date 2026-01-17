@@ -38,7 +38,7 @@ namespace MediAgenda.API.Controllers
             return Ok(APIR);
         }
 
-        // GET api/ApplicationUsers/klkm-anig-aaaa
+        // GET api/ApplicationUsers/dato-ramd-ommm
         [SwaggerOperation(
             Summary = "Obtiene el usuario de aplicacion en especifico.",
             Description = "Este endpoint trae un usuario de aplicacion con todos los datos relacionados al mismo."
@@ -77,7 +77,7 @@ namespace MediAgenda.API.Controllers
             return CreatedAtAction(actionName: nameof(Get), routeValues: new { id = dto.Id }, value: dto);
         }
 
-        // PUT api/ApplicationUsers/klkm-anig-aaaa
+        // PUT api/ApplicationUsers/dato-ramd-ommm
         [SwaggerOperation(
             Summary = "Actualiza un usuario de aplicacion.",
             Description = "Este endpoint actualiza un usuario de aplicacion solo si eres Admin."
@@ -103,19 +103,7 @@ namespace MediAgenda.API.Controllers
             return NoContent();
         }
 
-        [SwaggerOperation(
-            Summary = "Actualiza parcialmente un usuario de aplicacion.",
-            Description = "Este endpoint actualiza parcialmente un usuario de aplicacion."
-        )]
-        [SwaggerResponse(501, "No implementado.")]
-        [HttpPatch("{id:int}")]
-        [AuthorizeSameUserOrRoles("userId","Admin")]
-        public async Task<ApplicationUserDTO> PatchAsync(int id)
-        {
-            return null;
-        }
-
-
+        // DELETE api/ApplicationUsers/dato-ramd-ommm
         [SwaggerOperation(
             Summary = "Elimina un usuario de aplicacion.",
             Description = "Este endpoint elimina un usuario de aplicacion solo si eres Admin."

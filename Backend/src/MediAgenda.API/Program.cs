@@ -58,7 +58,6 @@ namespace MediAgenda.API
 
             builder.Services.AddValidatorsFromAssemblyContaining<AnalysisCreateValidation>();
             builder.Services.AddValidatorsFromAssemblyContaining<AnalysisUpdateValidation>();
-            builder.Services.AddValidatorsFromAssemblyContaining<ReasonsPatchValidation>();
             builder.Services.AddFluentValidationAutoValidation();
 
 
@@ -97,7 +96,6 @@ namespace MediAgenda.API
             builder.Services.AddScoped<IAuthService, AuthService>();
 
             builder.Services.AddScoped<IValidationService, ValidationService>();
-            builder.Services.AddScoped<IValidator<ReasonPatchDTO>, ReasonsPatchValidation>();
 
             builder.Services.AddIdentity<ApplicationUserModel, IdentityRole>()
                 .AddEntityFrameworkStores<MediContext>()
@@ -146,9 +144,6 @@ namespace MediAgenda.API
 
             var app = builder.Build();
 
-            app.UseDefaultFiles();
-            app.UseStaticFiles();
-
             app.UseSwagger();
             app.UseSwaggerUI();
 
@@ -177,8 +172,6 @@ namespace MediAgenda.API
             app.UseAuthorization();           
 
             app.MapControllers();
-
-            app.MapFallbackToFile("index.html");
 
             app.Run();
         }

@@ -1,4 +1,4 @@
-﻿using MediAgenda.Domain.Core;
+using MediAgenda.Domain.Core;
 using System.ComponentModel.DataAnnotations;
 
 namespace MediAgenda.Application.DTOs
@@ -27,5 +27,17 @@ namespace MediAgenda.Application.DTOs
     {
         [Required(ErrorMessage = "El campo de Id es requerido.")]
         public int Id { get; set; }
+    }
+
+    public class InsurancesListItem
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+
+        public InsurancesListItem(int id, string name)
+        {
+            Id = id;
+            Name = name;
+        }
     }
 }

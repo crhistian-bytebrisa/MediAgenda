@@ -97,15 +97,6 @@ namespace MediAgenda.API.Controllers
             return NoContent();
         }
 
-        [SwaggerOperation(Summary = "Actualiza parcialmente un permiso.", Description = "Este endpoint actualiza parcialmente un permiso.")]
-        [SwaggerResponse(501, "No implementado.")]
-        [HttpPatch("{id:int}")]
-        [Authorize(Roles = "Admin,Doctor")]
-        public async Task<ActionResult<DoctorDTO>> PatchAsync(int id)
-        {
-            return null;
-        }
-
         // DELETE api/Permissions/5
         [SwaggerOperation(Summary = "Elimina un permiso.", Description = "Este endpoint elimina un permiso solo si eres Doctor o Admin.")]
         [SwaggerResponse(204, "Permiso eliminado.")]

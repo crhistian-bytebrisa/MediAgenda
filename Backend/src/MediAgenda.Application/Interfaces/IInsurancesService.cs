@@ -1,4 +1,4 @@
-﻿using MediAgenda.Application.DTOs;
+using MediAgenda.Application.DTOs;
 using MediAgenda.Application.DTOs.API;
 using MediAgenda.Infraestructure.Models;
 using MediAgenda.Infraestructure.RequestRepositories;
@@ -7,7 +7,7 @@ namespace MediAgenda.Application.Interfaces
 {
     public interface IInsurancesService
     {
-        Task<List<string>> GetAllNames();
+        Task<List<InsurancesListItem>> GetAllNames();
         Task<InsuranceDTO> AddAsync(InsuranceCreateDTO dtoc);
         Task DeleteAsync(InsuranceModel model);
         Task<APIResponse<InsuranceDTO>> GetAllAsync(InsuranceRequest request);

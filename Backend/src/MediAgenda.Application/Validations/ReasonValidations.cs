@@ -45,29 +45,5 @@ namespace MediAgenda.Application.Validations
                 ).WithMessage("El titulo ya existe.");
         }
     }
-
-    public class ReasonsPatchValidation : AbstractValidator<ReasonPatchDTO>
-    {
-        private readonly IValidationService service;
-        public ReasonsPatchValidation(IValidationService service)
-        {
-            this.service = service;
-
-            RuleFor(x => x.Title)
-                .MustAsync(async (model, title, ct) =>
-                    !await service.ExistsProperty<ReasonModel, string, int>("Title", title, model.Id)
-                ).WithMessage("El titulo ya existe.");
-
-            RuleFor(x => x.Title)
-                .NotEmpty().WithMessage("El titulo es obligatorio.")
-                .MaximumLength(100).WithMessage("El titulo debe tener como maximo 100 caracteres.");
-
-            RuleFor(x => x.Description)
-                .MaximumLength(500).WithMessage("La descripcion debe tener como maximo 500 caracteres.");
-
-            RuleFor(x => x.Available)
-                .NotNull().WithMessage("El campo disponible es obligatorio.");
-
-        }
-    }
+    
 }

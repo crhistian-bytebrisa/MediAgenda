@@ -107,15 +107,6 @@ namespace MediAgenda.API.Controllers
             return CreatedAtAction(actionName: nameof(Get), routeValues: new { id = dto.Id }, value: dto);
         }
 
-        [SwaggerOperation(Summary = "Actualiza parcialmente un documento medico.", Description = "Este endpoint actualiza parcialmente un documento medico.")]
-        [SwaggerResponse(501, "No implementado.")]
-        [HttpPatch("{id:int}")]
-        [Authorize(Roles = "Admin,Doctor")]
-        public async Task<ActionResult<DoctorDTO>> PatchAsync(int id)
-        {
-            return null;
-        }
-
         // DELETE api/MedicalDocuments/5
         [SwaggerOperation(Summary = "Elimina un documento medico.", Description = "Este endpoint elimina un documento medico.")]
         [SwaggerResponse(204, "Documento medico eliminado.")]

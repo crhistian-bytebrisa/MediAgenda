@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 
 namespace MediAgenda.Application.DTOs
 {
@@ -40,5 +40,17 @@ namespace MediAgenda.Application.DTOs
     {
         [Required(ErrorMessage = "El campo {0} es requerido.")]
         public int Id { get; set; }
+    }
+
+    public class ClinicsListItem
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+
+        public ClinicsListItem(int id, string name)
+        {
+            Id = id;
+            Name = name;
+        }
     }
 }

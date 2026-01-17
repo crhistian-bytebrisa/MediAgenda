@@ -31,20 +31,22 @@ namespace MediAgenda.API.Controllers
             _service = service;
         }
         
+        // GET: api/Analyses/Names
         [HttpGet("Names")]
-        [SwaggerResponse(200, "Te devuelve los nombres de los analisis.",typeof(List<string>))]
+        [SwaggerResponse(200, "Te devuelve los nombres de los analisis.",typeof(List<AnalysesListItem>))]
         [SwaggerResponse(401, "No estas registrado.")]
         [SwaggerOperation(
             Summary = "Obtiene los nombres de los analisis.",
             Description = "Este endpoint se creo para llenar los textbox del front, todos los usuarios tienen acceso."
             )]
         [Authorize(Roles = "Doctor,Admin,User")]
-        public async Task<List<string>> GetNames()
+        public async Task<List<AnalysesListItem>> GetNames()
         {
             return await _service.GetAllNames();
         }
 
 
+        // GET: api/Analyses
         [HttpGet]
         [Authorize(Roles = "Doctor,Admin")]
         [SwaggerResponse(200, "Te devuelve los analisis en un JSON de paginacion.", typeof(APIResponse<AnalysisDTO>))]
@@ -62,6 +64,7 @@ namespace MediAgenda.API.Controllers
 
 
 
+        // GET api/Analyses/5
         [HttpGet("{id:int}")]
         [Authorize(Roles = "Doctor,Admin")]
         [SwaggerResponse(200, "Te devuelve un analisis.", typeof(AnalysisDTO))]
@@ -85,6 +88,7 @@ namespace MediAgenda.API.Controllers
         }
 
 
+        // POST api/Analyses
         [HttpPost]
         [Authorize(Roles = "Doctor,Admin")]
         [SwaggerResponse(200, "Te devuelve el analisis creado.", typeof(AnalysisDTO))]
@@ -100,6 +104,7 @@ namespace MediAgenda.API.Controllers
             return CreatedAtAction(actionName: nameof(Get), routeValues: new { id = dto.Id }, value: dto);
         }
 
+        // PUT api/Analyses/5
         [HttpPut("{id:int}")]
         [Authorize(Roles = "Doctor,Admin")]
         public async Task<ActionResult> PutAsync(int id, [FromBody] AnalysisUpdateDTO dtou)
@@ -114,21 +119,7 @@ namespace MediAgenda.API.Controllers
             return NoContent();
         }
 
-        [HttpPatch("{id:int}")]
-        [Authorize(Roles = "Admin,Doctor")]
-        public async Task<ActionResult<DayAvailableDTO>> PatchAsync(int id)
-        {
-            return null;
-        }
-
-        [SwaggerOperation(
-            Summary = "Elimina un analisis.",
-            Description = "Este endpoint elimina un analisis solo si eres Doctor o Admin."
-            )]
-        [SwaggerResponse(204, "Analisis eliminado.")]
-        [SwaggerResponse(401, "No estas registrado.")]
-        [SwaggerResponse(403, "No eres Admin o Doctor")]
-        [SwaggerResponse(404, "Analisis no encontrado.")]
+        // DELETE api/Analyses/5
         [HttpDelete("{id:int}")]
         [Authorize(Roles = "Doctor,Admin")]
         public async Task<ActionResult> Delete(int id)

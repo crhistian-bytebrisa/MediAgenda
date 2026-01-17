@@ -1,4 +1,4 @@
-﻿using FluentValidation;
+using FluentValidation;
 using FluentValidation.Results;
 using Mapster;
 using MediAgenda.Application.DTOs;
@@ -23,17 +23,15 @@ namespace MediAgenda.Application.Services
     {
         private readonly IReasonRepository _repo;
 
-        private readonly IValidator<ReasonPatchDTO> _validator;
-
-        public ReasonsService(IReasonRepository repo, IValidator<ReasonPatchDTO> validator)
+        public ReasonsService(IReasonRepository repo)
         {
             _repo = repo;
-            _validator = validator;
         }
 
-        public async Task<List<string>> GetAllNames()
+        public async Task<List<ReasonsListItem>> GetAllNames()
         {
-            return await _repo.GetAllNames();
+            var list = await _repo.GetAllNames();
+            return list.Select(x => new ReasonsListItem(x.Id, x.Name)).ToList();
         }
 
         public async Task<ReasonModel> GetByIdAsync(int id)
@@ -64,35 +62,7 @@ namespace MediAgenda.Application.Services
             var model = dtou.Adapt<ReasonModel>();
             await _repo.UpdateAsync(model);
         }
-
-        // Recibe el modelo actual y el JsonPatchDocument para aplicar los cambios
-        public async Task<FluentValidation.Results.ValidationResult> PatchAsync(ReasonModel model, JsonPatchDocument<ReasonPatchDTO> dtop)
-        {
-            // Convertir el modelo actual a DTO
-            var dto = model.Adapt<ReasonPatchDTO>();
-
-            // Aplicar el JsonPatchDocument al DTO
-            dtop.ApplyTo(dto);
-
-            // Validar el DTO modificado
-            var result = await _validator.ValidateAsync(dto);
-
-            // Si la validación falla, devolver los errores
-            if (!result.IsValid)
-            {
-                return result;
-            }
-
-            // Asegurar que no haya cambios en el ID
-            dto.Id = model.Id;
-
-            // Mapear los cambios del DTO de vuelta al modelo
-            dto.Adapt(model);
-
-            // Guardar los cambios en el repositorio
-            await _repo.UpdateAsync(model);
-            return result;
-        }
+       
 
         public async Task DeleteAsync(ReasonModel model)
         {
