@@ -1,16 +1,13 @@
-﻿using Mapster;
+using Mapster;
 using MediAgenda.API.Filters;
 using MediAgenda.Application.DTOs;
 using MediAgenda.Application.DTOs.API;
 using MediAgenda.Application.Interfaces;
-using MediAgenda.Application.Validations;
-using MediAgenda.Domain.Core;
-using MediAgenda.Infraestructure.Interfaces;
 using MediAgenda.Infraestructure.Models;
 using MediAgenda.Infraestructure.RequestRepositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace MediAgenda.API.Controllers
 {
@@ -26,6 +23,13 @@ namespace MediAgenda.API.Controllers
             _service = service;
         }
         // GET: api/ApplicationUsers
+        [SwaggerOperation(
+            Summary = "Obtiene los usuarios de aplicacion.",
+            Description = "Este endpoint se creo para obtener los usuarios de aplicacion en general, solo accesible para Doctores y Administradores."
+        )]
+        [SwaggerResponse(200, "Te devuelve los usuarios en un JSON de paginacion.", typeof(APIResponse<ApplicationUserDTO>))]
+        [SwaggerResponse(401, "No estas registrado.")]
+        [SwaggerResponse(403, "No eres Admin o Doctor")]
         [HttpGet]
         [Authorize(Roles = "Doctor,Admin")]
         public async Task<ActionResult<APIResponse<ApplicationUserDTO>>> Get([FromQuery] ApplicationUserRequest request)
@@ -35,6 +39,13 @@ namespace MediAgenda.API.Controllers
         }
 
         // GET api/ApplicationUsers/klkm-anig-aaaa
+        [SwaggerOperation(
+            Summary = "Obtiene el usuario de aplicacion en especifico.",
+            Description = "Este endpoint trae un usuario de aplicacion con todos los datos relacionados al mismo."
+        )]
+        [SwaggerResponse(200, "Te devuelve un usuario de aplicacion.", typeof(ApplicationUserDTO))]
+        [SwaggerResponse(401, "No estas registrado.")]
+        [SwaggerResponse(404, "Usuario no encontrado.")]
         [HttpGet("{id}")]
         [AuthorizeSameUserOrRoles("id","Admin")]
         public async Task<ActionResult<ApplicationUserDTO>> Get(Guid id)
@@ -51,6 +62,13 @@ namespace MediAgenda.API.Controllers
         }
 
         // POST api/ApplicationUsers
+        [SwaggerOperation(
+            Summary = "Agrega un usuario de aplicacion al sistema.",
+            Description = "Este endpoint crea un usuario de aplicacion solo si eres Admin."
+        )]
+        [SwaggerResponse(201, "Te devuelve el usuario creado.", typeof(ApplicationUserDTO))]
+        [SwaggerResponse(401, "No estas registrado.")]
+        [SwaggerResponse(403, "No eres Admin")]
         [HttpPost]
         [Authorize(Roles = "Admin")]
         public async Task<ActionResult<ApplicationUserDTO>> PostAsync([FromBody] ApplicationUserCreateDTO dtoc)
@@ -60,6 +78,14 @@ namespace MediAgenda.API.Controllers
         }
 
         // PUT api/ApplicationUsers/klkm-anig-aaaa
+        [SwaggerOperation(
+            Summary = "Actualiza un usuario de aplicacion.",
+            Description = "Este endpoint actualiza un usuario de aplicacion solo si eres Admin."
+        )]
+        [SwaggerResponse(204, "Usuario actualizado.")]
+        [SwaggerResponse(400, "Datos invalidos.")]
+        [SwaggerResponse(401, "No estas registrado.")]
+        [SwaggerResponse(403, "No eres Admin")]
         [HttpPut("{ids}")]
         [Authorize(Roles = "Admin")]
         public async Task<ActionResult> PutAsync(Guid id, [FromBody] ApplicationUserUpdateDTO dtou)
@@ -77,6 +103,11 @@ namespace MediAgenda.API.Controllers
             return NoContent();
         }
 
+        [SwaggerOperation(
+            Summary = "Actualiza parcialmente un usuario de aplicacion.",
+            Description = "Este endpoint actualiza parcialmente un usuario de aplicacion."
+        )]
+        [SwaggerResponse(501, "No implementado.")]
         [HttpPatch("{id:int}")]
         [AuthorizeSameUserOrRoles("userId","Admin")]
         public async Task<ApplicationUserDTO> PatchAsync(int id)
@@ -85,6 +116,14 @@ namespace MediAgenda.API.Controllers
         }
 
 
+        [SwaggerOperation(
+            Summary = "Elimina un usuario de aplicacion.",
+            Description = "Este endpoint elimina un usuario de aplicacion solo si eres Admin."
+        )]
+        [SwaggerResponse(204, "Usuario eliminado.")]
+        [SwaggerResponse(401, "No estas registrado.")]
+        [SwaggerResponse(403, "No eres Admin")]
+        [SwaggerResponse(404, "Usuario no encontrado.")]
         [HttpDelete("{id}")]
         [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Delete(Guid id)

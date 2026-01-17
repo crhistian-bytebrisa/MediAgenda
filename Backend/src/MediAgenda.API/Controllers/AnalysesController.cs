@@ -1,4 +1,4 @@
-﻿using Mapster;
+using Mapster;
 using MediAgenda.Application.DTOs;
 using MediAgenda.Application.DTOs.API;
 using MediAgenda.Application.Interfaces;
@@ -121,6 +121,14 @@ namespace MediAgenda.API.Controllers
             return null;
         }
 
+        [SwaggerOperation(
+            Summary = "Elimina un analisis.",
+            Description = "Este endpoint elimina un analisis solo si eres Doctor o Admin."
+            )]
+        [SwaggerResponse(204, "Analisis eliminado.")]
+        [SwaggerResponse(401, "No estas registrado.")]
+        [SwaggerResponse(403, "No eres Admin o Doctor")]
+        [SwaggerResponse(404, "Analisis no encontrado.")]
         [HttpDelete("{id:int}")]
         [Authorize(Roles = "Doctor,Admin")]
         public async Task<ActionResult> Delete(int id)

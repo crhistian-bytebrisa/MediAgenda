@@ -1,4 +1,4 @@
-﻿using Mapster;
+using Mapster;
 using MediAgenda.Application.DTOs;
 using MediAgenda.Application.DTOs.API;
 using MediAgenda.Application.Interfaces;
@@ -8,6 +8,7 @@ using MediAgenda.Infraestructure.RequestRepositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace MediAgenda.API.Controllers
 {
@@ -25,6 +26,10 @@ namespace MediAgenda.API.Controllers
 
 
         // GET: api/NoteConsultations
+        [SwaggerOperation(Summary = "Obtiene las notas de consultas.", Description = "Este endpoint se creo para obtener las notas de consultas en general, solo accesible para Doctores y Administradores.")]
+        [SwaggerResponse(200, "Te devuelve las notas de consultas en un JSON de paginacion.", typeof(APIResponse<NoteConsultationDTO>))]
+        [SwaggerResponse(401, "No estas registrado.")]
+        [SwaggerResponse(403, "No eres Admin o Doctor")]
         [HttpGet]
         [Authorize(Roles = "Admin,Doctor")]
         public async Task<ActionResult<APIResponse<NoteConsultationDTO>>> Get([FromQuery] NoteConsultationRequest request)
@@ -34,6 +39,11 @@ namespace MediAgenda.API.Controllers
         }
 
         // GET api/NoteConsultations/5
+        [SwaggerOperation(Summary = "Obtiene la nota de consulta en especifico.", Description = "Este endpoint trae una nota de consulta con todos los datos relacionados al mismo.")]
+        [SwaggerResponse(200, "Te devuelve una nota de consulta.", typeof(NoteConsultationDTO))]
+        [SwaggerResponse(401, "No estas registrado.")]
+        [SwaggerResponse(403, "No eres Admin o Doctor")]
+        [SwaggerResponse(404, "Nota de consulta no encontrada.")]
         [HttpGet("{id:int}")]
         [Authorize(Roles = "Admin,Doctor")]
         public async Task<ActionResult<NoteConsultationDTO>> Get(int id)
@@ -51,6 +61,10 @@ namespace MediAgenda.API.Controllers
         }
 
         // POST api/NoteConsultations
+        [SwaggerOperation(Summary = "Agrega una nota de consulta al sistema.", Description = "Este endpoint crea una nota de consulta solo si eres Doctor o Admin.")]
+        [SwaggerResponse(201, "Te devuelve la nota de consulta creada.", typeof(NoteConsultationDTO))]
+        [SwaggerResponse(401, "No estas registrado.")]
+        [SwaggerResponse(403, "No eres Admin o Doctor")]
         [HttpPost]
         [Authorize(Roles = "Admin,Doctor")]
         public async Task<ActionResult<NoteConsultationDTO>> PostAsync([FromBody] NoteConsultationCreateDTO dtoc)
@@ -60,6 +74,11 @@ namespace MediAgenda.API.Controllers
         }
 
         // PUT api/NoteConsultations/5
+        [SwaggerOperation(Summary = "Actualiza una nota de consulta.", Description = "Este endpoint actualiza una nota de consulta solo si eres Admin.")]
+        [SwaggerResponse(204, "Nota de consulta actualizada.")]
+        [SwaggerResponse(400, "Datos invalidos.")]
+        [SwaggerResponse(401, "No estas registrado.")]
+        [SwaggerResponse(403, "No eres Admin")]
         [HttpPut("{id:int}")]
         [Authorize(Roles = "Admin")]
         public async Task<ActionResult> PutAsync(int id, [FromBody] NoteConsultationUpdateDTO dtou)
@@ -79,6 +98,8 @@ namespace MediAgenda.API.Controllers
         }
 
 
+        [SwaggerOperation(Summary = "Actualiza parcialmente una nota de consulta.", Description = "Este endpoint actualiza parcialmente una nota de consulta.")]
+        [SwaggerResponse(501, "No implementado.")]
         [HttpPatch("{id:int}")]
         [Authorize(Roles = "Admin,Doctor")]
         public async Task<ActionResult<DoctorDTO>> PatchAsync(int id)
@@ -87,6 +108,11 @@ namespace MediAgenda.API.Controllers
         }
 
         // DELETE api/NoteConsultations/5
+        [SwaggerOperation(Summary = "Elimina una nota de consulta.", Description = "Este endpoint elimina una nota de consulta solo si eres Doctor o Admin.")]
+        [SwaggerResponse(204, "Nota de consulta eliminada.")]
+        [SwaggerResponse(401, "No estas registrado.")]
+        [SwaggerResponse(403, "No eres Admin o Doctor")]
+        [SwaggerResponse(404, "Nota de consulta no encontrada.")]
         [HttpDelete("{id:int}")]
         [Authorize(Roles = "Admin,Doctor")]
         public async Task<ActionResult> Delete(int id)

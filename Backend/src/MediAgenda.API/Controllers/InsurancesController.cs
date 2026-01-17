@@ -1,4 +1,4 @@
-﻿using Mapster;
+using Mapster;
 using MediAgenda.Application.DTOs;
 using MediAgenda.Application.DTOs.API;
 using MediAgenda.Application.Interfaces;
@@ -7,6 +7,7 @@ using MediAgenda.Infraestructure.Models;
 using MediAgenda.Infraestructure.RequestRepositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace MediAgenda.API.Controllers
 {
@@ -22,6 +23,9 @@ namespace MediAgenda.API.Controllers
             _service = service;
         }
 
+        [SwaggerOperation(Summary = "Obtiene los nombres de los seguros.", Description = "Este endpoint se creo para llenar los textbox del front, todos los usuarios tienen acceso.")]
+        [SwaggerResponse(200, "Te devuelve los nombres de los seguros.", typeof(List<string>))]
+        [SwaggerResponse(401, "No estas registrado.")]
         [HttpGet("Names")]
         [Authorize(Roles = "Doctor,Admin,User")]
         public async Task<List<string>> GetNames()
@@ -30,6 +34,9 @@ namespace MediAgenda.API.Controllers
         }
 
         // GET: api/Insurances
+        [SwaggerOperation(Summary = "Obtiene los seguros.", Description = "Este endpoint se creo para obtener los seguros en general.")]
+        [SwaggerResponse(200, "Te devuelve los seguros en un JSON de paginacion.", typeof(APIResponse<InsuranceDTO>))]
+        [SwaggerResponse(401, "No estas registrado.")]
         [HttpGet]
         public async Task<ActionResult<APIResponse<InsuranceDTO>>> Get([FromQuery] InsuranceRequest request)
         {
@@ -38,6 +45,10 @@ namespace MediAgenda.API.Controllers
         }
 
         // GET api/Insurances/5
+        [SwaggerOperation(Summary = "Obtiene el seguro en especifico.", Description = "Este endpoint trae un seguro con todos los datos relacionados al mismo.")]
+        [SwaggerResponse(200, "Te devuelve un seguro.", typeof(InsuranceDTO))]
+        [SwaggerResponse(401, "No estas registrado.")]
+        [SwaggerResponse(404, "Seguro no encontrado.")]
         [HttpGet("{id:int}")]
         public async Task<ActionResult<InsuranceDTO>> Get(int id)
         {
@@ -54,6 +65,9 @@ namespace MediAgenda.API.Controllers
         }
 
         // POST api/Insurances
+        [SwaggerOperation(Summary = "Agrega un seguro al sistema.", Description = "Este endpoint crea un seguro.")]
+        [SwaggerResponse(201, "Te devuelve el seguro creado.", typeof(InsuranceDTO))]
+        [SwaggerResponse(401, "No estas registrado.")]
         [HttpPost]
         public async Task<ActionResult<InsuranceDTO>> PostAsync([FromBody] InsuranceCreateDTO dtoc)
         {
@@ -62,6 +76,11 @@ namespace MediAgenda.API.Controllers
         }
 
         // PUT api/Insurances/5
+        [SwaggerOperation(Summary = "Actualiza un seguro.", Description = "Este endpoint actualiza un seguro solo si eres Admin.")]
+        [SwaggerResponse(204, "Seguro actualizado.")]
+        [SwaggerResponse(400, "Datos invalidos.")]
+        [SwaggerResponse(401, "No estas registrado.")]
+        [SwaggerResponse(403, "No eres Admin")]
         [HttpPut("{id:int}")]
         [Authorize(Roles = "Admin")]
         public async Task<ActionResult> PutAsync(int id, [FromBody] InsuranceUpdateDTO dtou)
@@ -80,6 +99,8 @@ namespace MediAgenda.API.Controllers
             return NoContent();
         }
 
+        [SwaggerOperation(Summary = "Actualiza parcialmente un seguro.", Description = "Este endpoint actualiza parcialmente un seguro.")]
+        [SwaggerResponse(501, "No implementado.")]
         [HttpPatch("{id:int}")]
         [Authorize(Roles = "Admin,Doctor")]
         public async Task<ActionResult<DoctorDTO>> PatchAsync(int id)
@@ -88,6 +109,10 @@ namespace MediAgenda.API.Controllers
         }
 
         // DELETE api/Insurances/5
+        [SwaggerOperation(Summary = "Elimina un seguro.", Description = "Este endpoint elimina un seguro.")]
+        [SwaggerResponse(204, "Seguro eliminado.")]
+        [SwaggerResponse(401, "No estas registrado.")]
+        [SwaggerResponse(404, "Seguro no encontrado.")]
         [HttpDelete("{id:int}")]
         public async Task<ActionResult> Delete(int id)
         {

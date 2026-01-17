@@ -1,4 +1,4 @@
-﻿using Mapster;
+using Mapster;
 using MediAgenda.Application.DTOs;
 using MediAgenda.Application.DTOs.API;
 using MediAgenda.Application.Interfaces;
@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace MediAgenda.API.Controllers
 {
@@ -27,8 +28,11 @@ namespace MediAgenda.API.Controllers
             _service = service;
         }
 
-       
+        
         // GET: api/Reasons
+        [SwaggerOperation(Summary = "Obtiene las razones.", Description = "Este endpoint se creo para obtener las razones en general.")]
+        [SwaggerResponse(200, "Te devuelve las razones en un JSON de paginacion.", typeof(APIResponse<ReasonDTO>))]
+        [SwaggerResponse(401, "No estas registrado.")]
         [HttpGet]
         [Authorize(Roles = "Admin,Doctor,User")]
         public async Task<ActionResult<APIResponse<ReasonDTO>>> Get([FromQuery] ReasonRequest request)
@@ -38,6 +42,10 @@ namespace MediAgenda.API.Controllers
         }
 
         // GET api/Reasons/5
+        [SwaggerOperation(Summary = "Obtiene la razon en especifico.", Description = "Este endpoint trae una razon con todos los datos relacionados al mismo.")]
+        [SwaggerResponse(200, "Te devuelve una razon.", typeof(ReasonDTO))]
+        [SwaggerResponse(401, "No estas registrado.")]
+        [SwaggerResponse(404, "Razon no encontrada.")]
         [HttpGet("{id:int}")]
         [Authorize(Roles = "Admin,Doctor,User")]
         public async Task<ActionResult<ReasonDTO>> Get(int id)
@@ -55,6 +63,10 @@ namespace MediAgenda.API.Controllers
         }
 
         // POST api/Reasons
+        [SwaggerOperation(Summary = "Agrega una razon al sistema.", Description = "Este endpoint crea una razon solo si eres Doctor o Admin.")]
+        [SwaggerResponse(201, "Te devuelve la razon creada.", typeof(ReasonDTO))]
+        [SwaggerResponse(401, "No estas registrado.")]
+        [SwaggerResponse(403, "No eres Admin o Doctor")]
         [HttpPost]
         [Authorize(Roles = "Admin,Doctor")]
         public async Task<ActionResult<ReasonDTO>> PostAsync([FromBody] ReasonCreateDTO dtoc)
@@ -64,6 +76,11 @@ namespace MediAgenda.API.Controllers
         }
 
         // PUT api/Reasons/5
+        [SwaggerOperation(Summary = "Actualiza una razon.", Description = "Este endpoint actualiza una razon solo si eres Doctor o Admin.")]
+        [SwaggerResponse(204, "Razon actualizada.")]
+        [SwaggerResponse(400, "Datos invalidos.")]
+        [SwaggerResponse(401, "No estas registrado.")]
+        [SwaggerResponse(403, "No eres Admin o Doctor")]
         [HttpPut("{id:int}")]
         [Authorize(Roles = "Admin,Doctor")]
         public async Task<ActionResult> PutAsync(int id, [FromBody] ReasonUpdateDTO dtou)
@@ -83,6 +100,11 @@ namespace MediAgenda.API.Controllers
         }
 
         // PATCH api/Reasons/5
+        [SwaggerOperation(Summary = "Actualiza parcialmente una razon.", Description = "Este endpoint actualiza parcialmente una razon solo si eres Doctor o Admin.")]
+        [SwaggerResponse(204, "Razon actualizada.")]
+        [SwaggerResponse(400, "Datos invalidos.")]
+        [SwaggerResponse(401, "No estas registrado.")]
+        [SwaggerResponse(403, "No eres Admin o Doctor")]
         [HttpPatch("{id:int}")]
         [Authorize(Roles = "Admin,Doctor")]
         public async Task<ActionResult> PatchAsync(int id, [FromBody] JsonPatchDocument<ReasonPatchDTO> dtop)
@@ -111,6 +133,11 @@ namespace MediAgenda.API.Controllers
         }
 
         // DELETE api/Reasons/5
+        [SwaggerOperation(Summary = "Elimina una razon.", Description = "Este endpoint elimina una razon solo si eres Doctor o Admin.")]
+        [SwaggerResponse(204, "Razon eliminada.")]
+        [SwaggerResponse(401, "No estas registrado.")]
+        [SwaggerResponse(403, "No eres Admin o Doctor")]
+        [SwaggerResponse(404, "Razon no encontrada.")]
         [HttpDelete("{id:int}")]
         [Authorize(Roles = "Admin,Doctor")]
         public async Task<ActionResult> Delete(int id)

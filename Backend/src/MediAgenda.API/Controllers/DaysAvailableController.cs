@@ -1,4 +1,4 @@
-﻿using Mapster;
+using Mapster;
 using MediAgenda.Application.DTOs;
 using MediAgenda.Application.DTOs.API;
 using MediAgenda.Application.Interfaces;
@@ -8,6 +8,7 @@ using MediAgenda.Infraestructure.Models;
 using MediAgenda.Infraestructure.RequestRepositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace MediAgenda.API.Controllers
 {
@@ -25,6 +26,9 @@ namespace MediAgenda.API.Controllers
         }
 
         // GET: api/DaysAvailable
+        [SwaggerOperation(Summary = "Obtiene los dias disponibles.", Description = "Este endpoint se creo para obtener los dias disponibles en general.")]
+        [SwaggerResponse(200, "Te devuelve los dias disponibles en un JSON de paginacion.", typeof(APIResponse<DayAvailableDTO>))]
+        [SwaggerResponse(401, "No estas registrado.")]
         [HttpGet]
         public async Task<ActionResult<APIResponse<DayAvailableDTO>>> Get([FromQuery] DayAvailableRequest request)
         {
@@ -33,6 +37,10 @@ namespace MediAgenda.API.Controllers
         }
 
         // GET api/DaysAvailable/5
+        [SwaggerOperation(Summary = "Obtiene el dia disponible en especifico.", Description = "Este endpoint trae un dia disponible con todos los datos relacionados al mismo.")]
+        [SwaggerResponse(200, "Te devuelve un dia disponible.", typeof(DayAvailableDTO))]
+        [SwaggerResponse(401, "No estas registrado.")]
+        [SwaggerResponse(404, "Dia disponible no encontrado.")]
         [HttpGet("{id:int}")]
         public async Task<ActionResult<DayAvailableDTO>> Get(int id)
         {
@@ -48,6 +56,10 @@ namespace MediAgenda.API.Controllers
         }
 
         // POST api/DaysAvailable
+        [SwaggerOperation(Summary = "Agrega un dia disponible al sistema.", Description = "Este endpoint crea un dia disponible.")]
+        [SwaggerResponse(201, "Te devuelve el dia disponible creado.", typeof(DayAvailableDTO))]
+        [SwaggerResponse(400, "Datos invalidos.")]
+        [SwaggerResponse(401, "No estas registrado.")]
         [HttpPost]
         public async Task<ActionResult<DayAvailableDTO>> PostAsync([FromBody] DayAvailableCreateDTO dtoc)
         {
@@ -62,6 +74,10 @@ namespace MediAgenda.API.Controllers
         }
 
         // PUT api/DaysAvailable/5
+        [SwaggerOperation(Summary = "Actualiza un dia disponible.", Description = "Este endpoint actualiza un dia disponible.")]
+        [SwaggerResponse(204, "Dia disponible actualizado.")]
+        [SwaggerResponse(400, "Datos invalidos.")]
+        [SwaggerResponse(401, "No estas registrado.")]
         [HttpPut("{id:int}")]
         public async Task<ActionResult> PutAsync(int id, [FromBody] DayAvailableUpdateDTO dtou)
         {
@@ -79,6 +95,8 @@ namespace MediAgenda.API.Controllers
             return NoContent();
         }
 
+        [SwaggerOperation(Summary = "Actualiza parcialmente un dia disponible.", Description = "Este endpoint actualiza parcialmente un dia disponible.")]
+        [SwaggerResponse(501, "No implementado.")]
         [HttpPatch("{id:int}")]
         [Authorize(Roles = "Admin,Doctor")]
         public async Task<ActionResult<DayAvailableDTO>> PatchAsync(int id)
@@ -87,6 +105,10 @@ namespace MediAgenda.API.Controllers
         }
 
         // DELETE api/DaysAvailable/5
+        [SwaggerOperation(Summary = "Elimina un dia disponible.", Description = "Este endpoint elimina un dia disponible.")]
+        [SwaggerResponse(204, "Dia disponible eliminado.")]
+        [SwaggerResponse(401, "No estas registrado.")]
+        [SwaggerResponse(404, "Dia disponible no encontrado.")]
         [HttpDelete("{id:int}")]
         public async Task<ActionResult> Delete(int id)
         {

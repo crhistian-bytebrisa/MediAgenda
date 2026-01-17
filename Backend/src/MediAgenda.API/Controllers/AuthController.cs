@@ -1,10 +1,11 @@
-﻿using MediAgenda.Application.DTOs;
+using MediAgenda.Application.DTOs;
 using MediAgenda.Application.DTOs.API;
 using MediAgenda.Application.Interfaces;
 using MediAgenda.Application.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Build.ObjectModelRemoting;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace MediAgenda.API.Controllers
 {
@@ -19,6 +20,8 @@ namespace MediAgenda.API.Controllers
             _service = service;
         }
 
+        [SwaggerOperation(Summary = "Inicia sesion en el sistema.", Description = "Este endpoint permite a los usuarios iniciar sesion.")]
+        [SwaggerResponse(200, "Te devuelve el token y la informacion del usuario.", typeof(APIJWTResponse))]
         [HttpPost("Login")]
         public async Task<ActionResult<APIJWTResponse>> Login(LoginDTO dto)
         {
@@ -27,6 +30,8 @@ namespace MediAgenda.API.Controllers
             return new APIJWTResponse(token.User, token.Roles);
         }
 
+        [SwaggerOperation(Summary = "Registra un nuevo usuario en el sistema.", Description = "Este endpoint permite registrar un nuevo usuario.")]
+        [SwaggerResponse(200, "Te devuelve el token y la informacion del usuario.", typeof(APIJWTResponse))]
         [HttpPost("Register")]
         public async Task<ActionResult<APIJWTResponse>> Register(RegisterDTO dto)
         {
@@ -35,6 +40,9 @@ namespace MediAgenda.API.Controllers
             return new APIJWTResponse(token.User,token.Roles);
         }
 
+        [SwaggerOperation(Summary = "Cierra sesion en el sistema.", Description = "Este endpoint permite a los usuarios cerrar sesion.")]
+        [SwaggerResponse(204, "Sesion cerrada.")]
+        [SwaggerResponse(401, "No estas registrado.")]
         [HttpPut("Logout")]
         [Authorize]
         public async Task<ActionResult> Logout()

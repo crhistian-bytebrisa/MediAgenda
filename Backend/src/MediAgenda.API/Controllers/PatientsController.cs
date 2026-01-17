@@ -1,4 +1,4 @@
-﻿using Mapster;
+using Mapster;
 using MediAgenda.API.Filters;
 using MediAgenda.Application.DTOs;
 using MediAgenda.Application.DTOs.API;
@@ -9,6 +9,7 @@ using MediAgenda.Infraestructure.Models;
 using MediAgenda.Infraestructure.RequestRepositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace MediAgenda.API.Controllers
 {
@@ -24,6 +25,10 @@ namespace MediAgenda.API.Controllers
             _service = service;
         }
         // GET: api/Patients
+        [SwaggerOperation(Summary = "Obtiene los pacientes.", Description = "Este endpoint se creo para obtener los pacientes en general, solo accesible para Doctores y Administradores.")]
+        [SwaggerResponse(200, "Te devuelve los pacientes en un JSON de paginacion.", typeof(APIResponse<PatientDTO>))]
+        [SwaggerResponse(401, "No estas registrado.")]
+        [SwaggerResponse(403, "No eres Admin o Doctor")]
         [HttpGet]
         [Authorize(Roles = "Doctor,Admin")]
         public async Task<ActionResult<APIResponse<PatientDTO>>> Get([FromQuery] PatientRequest request)
@@ -33,6 +38,11 @@ namespace MediAgenda.API.Controllers
         }
 
         // GET api/Patients/5
+        [SwaggerOperation(Summary = "Obtiene el paciente en especifico.", Description = "Este endpoint trae un paciente con todos los datos relacionados al mismo.")]
+        [SwaggerResponse(200, "Te devuelve un paciente.", typeof(PatientDTO))]
+        [SwaggerResponse(401, "No estas registrado.")]
+        [SwaggerResponse(403, "No tienes permisos.")]
+        [SwaggerResponse(404, "Paciente no encontrado.")]
         [HttpGet("{id:int}")]
         [AuthorizeSamePatientIdOrRoles("id","Doctor","Admin")]
         public async Task<ActionResult<PatientDTO>> Get(int id)
@@ -49,6 +59,11 @@ namespace MediAgenda.API.Controllers
         }
 
         // GET api/Patients/5/Notes
+        [SwaggerOperation(Summary = "Obtiene las notas de un paciente.", Description = "Este endpoint trae las notas de un paciente especifico.")]
+        [SwaggerResponse(200, "Te devuelve las notas en un JSON de paginacion.", typeof(APIResponse<NotePatientDTO>))]
+        [SwaggerResponse(401, "No estas registrado.")]
+        [SwaggerResponse(403, "No eres Admin o Doctor")]
+        [SwaggerResponse(404, "Paciente no encontrado.")]
         [HttpGet("{id:int}/Notes")]
         [Authorize(Roles = "Doctor,Admin")]
         public async Task<ActionResult<APIResponse<NotePatientDTO>>> GetNotes(int id, [FromQuery] PatientNoteRequest request)
@@ -62,6 +77,11 @@ namespace MediAgenda.API.Controllers
         }
 
         // GET api/Patients/5/Consultations
+        [SwaggerOperation(Summary = "Obtiene las consultas de un paciente.", Description = "Este endpoint trae las consultas de un paciente especifico.")]
+        [SwaggerResponse(200, "Te devuelve las consultas en un JSON de paginacion.", typeof(APIResponse<ConsultationDTO>))]
+        [SwaggerResponse(401, "No estas registrado.")]
+        [SwaggerResponse(403, "No tienes permisos.")]
+        [SwaggerResponse(404, "Paciente no encontrado.")]
         [HttpGet("{id:int}/Consultations")]
         [AuthorizeSamePatientIdOrRoles("id", "Doctor", "Admin")]
         public async Task<ActionResult<APIResponse<ConsultationDTO>>> GetConsultations(int id, [FromQuery] PatientConsultationRequest request)
@@ -75,6 +95,11 @@ namespace MediAgenda.API.Controllers
         }
 
         // GET api/Patients/5/Documents
+        [SwaggerOperation(Summary = "Obtiene los documentos de un paciente.", Description = "Este endpoint trae los documentos medicos de un paciente especifico.")]
+        [SwaggerResponse(200, "Te devuelve los documentos en un JSON de paginacion.", typeof(APIResponse<MedicalDocumentDTO>))]
+        [SwaggerResponse(401, "No estas registrado.")]
+        [SwaggerResponse(403, "No tienes permisos.")]
+        [SwaggerResponse(404, "Paciente no encontrado.")]
         [HttpGet("{id:int}/Documents")]
         [AuthorizeSamePatientIdOrRoles("id", "Doctor", "Admin")]
         public async Task<ActionResult<APIResponse<MedicalDocumentDTO>>> GetDocuments(int id, [FromQuery] PatientMedicalDocumentRequest request)
@@ -88,6 +113,11 @@ namespace MediAgenda.API.Controllers
         }
 
         // GET api/Patients/5/Medicines
+        [SwaggerOperation(Summary = "Obtiene los medicamentos de un paciente.", Description = "Este endpoint trae los medicamentos de un paciente especifico.")]
+        [SwaggerResponse(200, "Te devuelve los medicamentos en un JSON de paginacion.", typeof(APIResponse<PrescriptionMedicineDTO>))]
+        [SwaggerResponse(401, "No estas registrado.")]
+        [SwaggerResponse(403, "No tienes permisos.")]
+        [SwaggerResponse(404, "Paciente no encontrado.")]
         [HttpGet("{id:int}/Medicines")]
         [AuthorizeSamePatientIdOrRoles("id", "Doctor", "Admin")]
         public async Task<ActionResult<APIResponse<PrescriptionMedicineDTO>>> GetMedicines(int id, [FromQuery] PatientMedicamentRequest request)
@@ -101,6 +131,10 @@ namespace MediAgenda.API.Controllers
         }
 
         // POST api/Patients
+        [SwaggerOperation(Summary = "Agrega un paciente al sistema.", Description = "Este endpoint crea un paciente solo si eres Admin.")]
+        [SwaggerResponse(201, "Te devuelve el paciente creado.", typeof(PatientDTO))]
+        [SwaggerResponse(401, "No estas registrado.")]
+        [SwaggerResponse(403, "No eres Admin")]
         [HttpPost]
         [Authorize(Roles = "Admin")]
         public async Task<ActionResult<PatientDTO>> PostAsync([FromBody] PatientCreateDTO dtoc)
@@ -110,6 +144,11 @@ namespace MediAgenda.API.Controllers
         }
 
         // PUT api/Patients/5
+        [SwaggerOperation(Summary = "Actualiza un paciente.", Description = "Este endpoint actualiza un paciente solo si eres Admin.")]
+        [SwaggerResponse(204, "Paciente actualizado.")]
+        [SwaggerResponse(400, "Datos invalidos.")]
+        [SwaggerResponse(401, "No estas registrado.")]
+        [SwaggerResponse(403, "No eres Admin")]
         [HttpPut("{id:int}")]
         [Authorize(Roles = "Admin")]
         public async Task<ActionResult> PutAsync(int id, [FromBody] PatientUpdateDTO dtou)
@@ -124,6 +163,8 @@ namespace MediAgenda.API.Controllers
             return NoContent();
         }
 
+        [SwaggerOperation(Summary = "Actualiza parcialmente un paciente.", Description = "Este endpoint actualiza parcialmente un paciente.")]
+        [SwaggerResponse(501, "No implementado.")]
         [HttpPatch("{id:int}")]
         [AuthorizeSamePatientIdOrRoles("id", "Doctor", "Admin")]
         public async Task<ActionResult<DoctorDTO>> PatchAsync(int id)
@@ -132,6 +173,11 @@ namespace MediAgenda.API.Controllers
         }
 
         // DELETE api/Patients/5
+        [SwaggerOperation(Summary = "Elimina un paciente.", Description = "Este endpoint elimina un paciente solo si eres Admin.")]
+        [SwaggerResponse(204, "Paciente eliminado.")]
+        [SwaggerResponse(401, "No estas registrado.")]
+        [SwaggerResponse(403, "No eres Admin")]
+        [SwaggerResponse(404, "Paciente no encontrado.")]
         [HttpDelete("{id:int}")]
         [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Delete(int id)

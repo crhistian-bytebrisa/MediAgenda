@@ -1,4 +1,4 @@
-﻿using Mapster;
+using Mapster;
 using MediAgenda.API.Filters;
 using MediAgenda.Application.DTOs;
 using MediAgenda.Application.DTOs.API;
@@ -11,6 +11,7 @@ using MediAgenda.Infraestructure.RequestRepositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace MediAgenda.API.Controllers
 {
@@ -31,6 +32,9 @@ namespace MediAgenda.API.Controllers
 
 
         // GET: api/MedicalDocuments
+        [SwaggerOperation(Summary = "Obtiene los documentos medicos.", Description = "Este endpoint se creo para obtener los documentos medicos en general.")]
+        [SwaggerResponse(200, "Te devuelve los documentos medicos en un JSON de paginacion.", typeof(APIResponse<MedicalDocumentDTO>))]
+        [SwaggerResponse(401, "No estas registrado.")]
         [HttpGet]
         public async Task<ActionResult<APIResponse<MedicalDocumentDTO>>> Get([FromQuery] MedicalDocumentRequest request)
         {
@@ -39,6 +43,10 @@ namespace MediAgenda.API.Controllers
         }
 
         // GET api/MedicalDocuments/5
+        [SwaggerOperation(Summary = "Obtiene el documento medico en especifico.", Description = "Este endpoint trae un documento medico con todos los datos relacionados al mismo.")]
+        [SwaggerResponse(200, "Te devuelve un documento medico.", typeof(MedicalDocumentDTO))]
+        [SwaggerResponse(401, "No estas registrado.")]
+        [SwaggerResponse(404, "Documento medico no encontrado.")]
         [HttpGet("{id:int}")]
         public async Task<ActionResult<MedicalDocumentDTO>> Get(int id)
         {
@@ -54,6 +62,10 @@ namespace MediAgenda.API.Controllers
         }
 
         // GET api/MedicalDocuments/5/Download
+        [SwaggerOperation(Summary = "Descarga un documento medico.", Description = "Este endpoint permite descargar un documento medico.")]
+        [SwaggerResponse(200, "Archivo descargado.")]
+        [SwaggerResponse(401, "No estas registrado.")]
+        [SwaggerResponse(404, "Documento medico no encontrado.")]
         [HttpGet("{id:int}/Download")]
         public async Task<IActionResult> Download(int id)
         {
@@ -63,6 +75,10 @@ namespace MediAgenda.API.Controllers
         }
 
         // GET api/MedicalDocuments/5/Open
+        [SwaggerOperation(Summary = "Abre un documento medico.", Description = "Este endpoint permite abrir un documento medico en el navegador.")]
+        [SwaggerResponse(200, "Archivo abierto.")]
+        [SwaggerResponse(401, "No estas registrado.")]
+        [SwaggerResponse(404, "Documento medico no encontrado.")]
         [HttpGet("{id:int}/Open")]
         public async Task<IActionResult> Open(int id)
         {
@@ -71,6 +87,10 @@ namespace MediAgenda.API.Controllers
         }
 
         // POST api/MedicalDocuments/Upload
+        [SwaggerOperation(Summary = "Sube un documento medico.", Description = "Este endpoint permite subir un documento medico.")]
+        [SwaggerResponse(201, "Te devuelve el documento medico subido.", typeof(MedicalDocumentDTO))]
+        [SwaggerResponse(400, "Datos invalidos.")]
+        [SwaggerResponse(401, "No estas registrado.")]
         [HttpPost("Upload")]
         [RequestSizeLimit(10485760)]
         public async Task<ActionResult<MedicalDocumentDTO>> PostAsync(MedicalDocumentCreateDTO dtoc)
@@ -87,6 +107,8 @@ namespace MediAgenda.API.Controllers
             return CreatedAtAction(actionName: nameof(Get), routeValues: new { id = dto.Id }, value: dto);
         }
 
+        [SwaggerOperation(Summary = "Actualiza parcialmente un documento medico.", Description = "Este endpoint actualiza parcialmente un documento medico.")]
+        [SwaggerResponse(501, "No implementado.")]
         [HttpPatch("{id:int}")]
         [Authorize(Roles = "Admin,Doctor")]
         public async Task<ActionResult<DoctorDTO>> PatchAsync(int id)
@@ -95,6 +117,10 @@ namespace MediAgenda.API.Controllers
         }
 
         // DELETE api/MedicalDocuments/5
+        [SwaggerOperation(Summary = "Elimina un documento medico.", Description = "Este endpoint elimina un documento medico.")]
+        [SwaggerResponse(204, "Documento medico eliminado.")]
+        [SwaggerResponse(401, "No estas registrado.")]
+        [SwaggerResponse(404, "Documento medico no encontrado.")]
         [HttpDelete("{id:int}")]
         public async Task<ActionResult> Delete(int id)
         {
