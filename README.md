@@ -4,6 +4,10 @@ Este es un proyecto centrado en la gestión de consultas médicas para un médic
 
 El proyecto nació a partir de una necesidad real de un familiar médico y fue implementado inicialmente como parte de uno de los proyectos requeridos en el ITLA. Esta versión corresponde a una **API REST profesional**, enfocada exclusivamente en el **backend**, con documentación interactiva mediante **Swagger**.
 
+El mismo esta desplegado en [Somee](https://somee.com/) una plataforma la cual permite hostear aplicaciones de .NET con bases de datos SQL Server.
+
+[Despliegue](https://mediagenda.somee.com/swagger/index.html)
+
 ---
 
 ## 🛠️ Tecnologías
