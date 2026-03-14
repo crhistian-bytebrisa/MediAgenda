@@ -12,8 +12,6 @@ El mismo esta desplegado en [Somee](https://somee.com/) una plataforma la cual p
 
 ## 🛠️ Tecnologías
 
-<h3 align="center">Backend</h3>
-
 <table align="center">
   <tr>
     <td width="120" align="center" style="padding:10px; border:2px solid #512BD4; border-radius:10px; background-color:#1e1e1e;">
@@ -100,8 +98,6 @@ El mismo esta desplegado en [Somee](https://somee.com/) una plataforma la cual p
 
 ## ▶️ Cómo ejecutar el proyecto
 
-### Backend
-
 ```bash
 dotnet restore
 dotnet ef database update
@@ -109,3 +105,16 @@ dotnet run
 ```
 
 Una vez iniciado, la documentación de la API estará disponible en **Swagger**, lo que permite probar y explorar todos los endpoints expuestos.
+
+---
+
+## 🌐 O visitar la API desplegada
+
+Puedes acceder desde el [link](https://mediagenda.somee.com/swagger/index.html) de aca y te encontraras con la API desplegada en Somee.
+
+Veras algo asi:
+
+<img width="1516" height="728" alt="imagen del despliegue" src="https://github.com/user-attachments/assets/d6636f85-bb84-4c05-bfe2-767197989afb" />
+
+
+
