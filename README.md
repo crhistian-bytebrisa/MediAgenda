@@ -6,7 +6,7 @@ El proyecto nació a partir de una necesidad real de un familiar médico y fue i
 
 El mismo esta desplegado en [Somee](https://somee.com/) una plataforma la cual permite hostear aplicaciones de .NET con bases de datos SQL Server.
 
-[Despliegue](https://mediagenda2.somee.com/swagger/index.html)
+[Despliegue](http://mediagenda2.somee.com/swagger/index.html)
 
 ---
 
